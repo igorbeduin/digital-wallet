@@ -9,12 +9,12 @@ export function RoutesNavigator() {
 
   return (
     <>
-      <button onClick={() => console.log("isSignedIn", isSignedIn)}>
-        isSignedIn
-      </button>
       <Routes>
         {isSignedIn ? (
-          <Route path="/" element={<Dashboard />} />
+          <>
+            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/" element={<Dashboard />} />
+          </>
         ) : (
           <>
             <Route path="/" element={<Navigate to="/login" />} />

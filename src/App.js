@@ -7,7 +7,6 @@ function App() {
   return (
     <BrowserRouter>
       <AuthenticationContextProvider>
-        <h1>Digital Wallet</h1>
         <RoutesNavigator />
       </AuthenticationContextProvider>
     </BrowserRouter>

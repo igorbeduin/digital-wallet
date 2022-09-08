@@ -2,10 +2,19 @@
 
 
 ## TODO List
-- [ ] Pages Routes
-  - [ ] Login
-  - [ ] SignUp
+- [x] Pages Routes
+  - [x] Login
+  - [x] SignUp
+  - [x] Dashboard
+- [x] Authentication Flow
+  - [x] SignUp/Login integration with local storage  
+  - [x] Private/public pages separation
+- Pages Content
+  - [x] Login
+  - [x] SignUp
   - [ ] Dashboard
-- [ ] Authentication Flow
-  - [ ] SignUp/Login integration with local storage  
-  - [ ] Private/public pages separation
+- [ ] Dashboard subpages navigation 
+- [ ] Subpages content
+  - [ ] Summary
+  - [ ] Negotiate
+  - [ ] Transactions History

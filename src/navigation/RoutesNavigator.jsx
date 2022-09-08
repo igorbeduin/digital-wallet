@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { useAuthenticationContext } from "../contexts/AuthenticationContext";
-import { Dashboard, Login, SignUp } from "../components/pages";
+import { useAuthenticationContext } from "contexts/AuthenticationContext";
+import { Dashboard, SignUp, Login } from "pages";
 
 export function RoutesNavigator() {
   const { isSignedIn } = useAuthenticationContext();

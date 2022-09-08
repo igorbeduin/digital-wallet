@@ -4,6 +4,7 @@ const AuthenticationContext = createContext({
   isSignedIn: false,
 });
 
+// eslint-disable-next-line react/prop-types
 export function AuthenticationContextProvider({ children }) {
   const [isSignedIn, setIsSignedIn] = useState(false);
 

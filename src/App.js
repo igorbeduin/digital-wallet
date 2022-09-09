@@ -16,11 +16,11 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer />
-      <DashboardContextProvider>
-        <AuthenticationContextProvider>
+      <AuthenticationContextProvider>
+        <DashboardContextProvider>
           <RoutesNavigator />
-        </AuthenticationContextProvider>
-      </DashboardContextProvider>
+        </DashboardContextProvider>
+      </AuthenticationContextProvider>
     </BrowserRouter>
   );
 }

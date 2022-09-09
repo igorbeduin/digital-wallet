@@ -2,8 +2,9 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import { AuthenticationContextProvider } from "./contexts/AuthenticationContext";
-import { RoutesNavigator } from "./navigation/RoutesNavigator";
+import { AuthenticationContextProvider } from "contexts/AuthenticationContext";
+import { DashboardContextProvider } from "contexts/DashboardContext";
+import { RoutesNavigator } from "navigation/RoutesNavigator";
 
 import { useInitialConfiguration } from "hooks/useInitialConfiguration";
 
@@ -15,9 +16,11 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer />
-      <AuthenticationContextProvider>
-        <RoutesNavigator />
-      </AuthenticationContextProvider>
+      <DashboardContextProvider>
+        <AuthenticationContextProvider>
+          <RoutesNavigator />
+        </AuthenticationContextProvider>
+      </DashboardContextProvider>
     </BrowserRouter>
   );
 }

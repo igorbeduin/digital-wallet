@@ -12,8 +12,8 @@
 - Pages Content
   - [x] Login
   - [x] SignUp
-  - [ ] Dashboard
-- [ ] Dashboard subpages navigation 
+  - [x] Dashboard
+- [x] Dashboard subpages navigation 
 - [ ] Subpages content
   - [ ] Summary
   - [ ] Negotiate

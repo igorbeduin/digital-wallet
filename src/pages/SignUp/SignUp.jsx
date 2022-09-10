@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { useAuthentication } from "hooks/useAuthentication";
+import { useWalletsDb } from "hooks/useWalletsDb";
 
 export function SignUp() {
   const [usernameInputValue, setUsernameInputValue] = useState("");
@@ -14,6 +15,7 @@ export function SignUp() {
   const navigate = useNavigate();
 
   const { signUp } = useAuthentication();
+  const { initializeUserWallet } = useWalletsDb();
 
   return (
     <>
@@ -32,6 +34,7 @@ export function SignUp() {
                   password: passwordInputValue,
                   passwordValidation: passwordValidationInputValue,
                 });
+                initializeUserWallet({ userId: usernameInputValue });
                 toast.success("Usuário criado com sucesso!");
                 navigate("/login");
               } catch (err) {

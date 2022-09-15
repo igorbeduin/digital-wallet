@@ -7,8 +7,7 @@ import { useAuthenticationContext } from "contexts/AuthenticationContext";
 import { useDashboardContext } from "contexts/DashboardContext";
 
 export function Sidebar() {
-  const { setIsSignedIn } = useAuthenticationContext();
-  const { dashboardPages } = useDashboardContext();
+  const { logout } = useAuthenticationContext();
 
   return (
     <>
@@ -22,7 +21,7 @@ export function Sidebar() {
         {dashboardPages.map((page, index) => (
           <div key={`sidebar-item-${index}`}>
             <Link
-              className="flex hover:text-lg justify-start items-center hover:text-green-500 rounded-lg py-2 pl-6"
+              className="flex justify-start items-center text-gray-800 hover:text-green-500 py-2 pl-6"
               to={page.id}
             >
               <FontAwesomeIcon icon={page.icon} />
@@ -35,8 +34,8 @@ export function Sidebar() {
         <hr />
       </div>
       <button
-        className="flex w-full hover:text-lg justify-start items-center hover:text-red-500 rounded-lg py-2 pl-6"
-        onClick={() => setIsSignedIn(false)}
+        className="flex w-full justify-start items-center text-gray-800 hover:text-red-500 rounded-lg py-2 pl-6"
+        onClick={logout}
       >
         <FontAwesomeIcon icon={faRightFromBracket} />
         <p className="pl-3">Sair</p>

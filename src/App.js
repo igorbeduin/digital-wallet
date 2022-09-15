@@ -3,12 +3,12 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import { AuthenticationContextProvider } from "contexts/AuthenticationContext";
-import { DashboardContextProvider } from "contexts/DashboardContext";
 import { RoutesNavigator } from "navigation/RoutesNavigator";
 
 import { useInitialConfiguration } from "hooks/useInitialConfiguration";
 
 import "react-toastify/dist/ReactToastify.css";
+import { TransactionContextProvider } from "contexts/TransactionContext";
 
 function App() {
   useInitialConfiguration();
@@ -17,9 +17,9 @@ function App() {
     <BrowserRouter>
       <ToastContainer />
       <AuthenticationContextProvider>
-        <DashboardContextProvider>
+        <TransactionContextProvider>
           <RoutesNavigator />
-        </DashboardContextProvider>
+        </TransactionContextProvider>
       </AuthenticationContextProvider>
     </BrowserRouter>
   );

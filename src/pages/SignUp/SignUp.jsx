@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import { useAuthentication } from "hooks/useAuthentication";
 import { useWalletsDb } from "hooks/useWalletsDb";
+import { useHistoryDb } from "hooks/useHistoryDb";
 
 export function SignUp() {
   const [usernameInputValue, setUsernameInputValue] = useState("");
@@ -16,6 +17,7 @@ export function SignUp() {
 
   const { signUp } = useAuthentication();
   const { initializeUserWallet } = useWalletsDb();
+  const { initializeUserHistory } = useHistoryDb();
 
   return (
     <>
@@ -35,6 +37,7 @@ export function SignUp() {
                   passwordValidation: passwordValidationInputValue,
                 });
                 initializeUserWallet({ userId: usernameInputValue });
+                initializeUserHistory({ userId: usernameInputValue });
                 toast.success("Usuário criado com sucesso!");
                 navigate("/login");
               } catch (err) {

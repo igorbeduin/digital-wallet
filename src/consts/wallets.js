@@ -1,12 +1,19 @@
 const wallets = {
   admin: {
-    credit: 100000000,
-    currency: "R$",
-    cryptoCurrencies: {
-      bitcoins: {
+    currencies: {
+      BRL: {
+        name: "real",
+        id: "BRL",
+        credit: 100000,
+      },
+      BTC: {
+        name: "bitcoin",
+        id: "BTC",
         credit: 0,
       },
-      busd: {
+      BUSD: {
+        name: "binance usd",
+        id: "BUSD",
         credit: 0,
       },
     },

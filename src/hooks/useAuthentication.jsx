@@ -1,13 +1,14 @@
 import { useAuthenticationContext } from "contexts/AuthenticationContext";
 
 export function useAuthentication() {
-  const { setIsSignedIn } = useAuthenticationContext();
+  const { loginUser } = useAuthenticationContext();
+
   function login({ username, password }) {
     const users = JSON.parse(localStorage.getItem("users"));
     const userFound = !!users.find(
       (user) => user.username === username && user.password === password
     );
-    if (userFound) setIsSignedIn(true);
+    if (userFound) loginUser(username);
     else throw new Error("User not found");
   }
 

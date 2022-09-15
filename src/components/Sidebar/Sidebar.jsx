@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 import { useAuthenticationContext } from "contexts/AuthenticationContext";
-import { useDashboardContext } from "contexts/DashboardContext";
+
+import pages from "consts/pages";
 
 export function Sidebar() {
   const { logout } = useAuthenticationContext();
@@ -18,7 +19,7 @@ export function Sidebar() {
         <hr />
       </div>
       <ul>
-        {dashboardPages.map((page, index) => (
+        {pages.map((page, index) => (
           <div key={`sidebar-item-${index}`}>
             <Link
               className="flex justify-start items-center text-gray-800 hover:text-green-500 py-2 pl-6"

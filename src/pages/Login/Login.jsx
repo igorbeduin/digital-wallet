@@ -13,8 +13,6 @@ export function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState(false);
 
-  console.log("loginError", loginError);
-
   return (
     <>
       <div className="bg-slate-50 h-screen flex flex-row justify-center items-start py-32">

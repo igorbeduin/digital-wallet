@@ -24,5 +24,16 @@ export function useWalletsDb() {
     localStorage.setItem("wallets", JSON.stringify(wallets));
   }
 
-  return { initializeUserWallet };
+  function getUserWallet(userId) {
+    const wallets = JSON.parse(localStorage.getItem("wallets"));
+    return wallets[userId];
+  }
+
+  function setUserWallet({ userId, newWallet }) {
+    const wallets = JSON.parse(localStorage.getItem("wallets"));
+    wallets[userId] = newWallet;
+    localStorage.setItem("wallets", JSON.stringify(wallets));
+  }
+
+  return { initializeUserWallet, getUserWallet, setUserWallet };
 }

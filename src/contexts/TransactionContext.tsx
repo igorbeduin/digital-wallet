@@ -8,7 +8,7 @@ import { useHistoryDb } from "hooks/useHistoryDb";
 const TransactionContext = createContext({});
 
 // eslint-disable-next-line react/prop-types
-export function TransactionContextProvider({ children }) {
+export function TransactionContextProvider({ children }: {children: React.ReactNode}) {
   const { user, updateUserWallet } = useAuthenticationContext();
   const [bitcoinPrice, setBitcoinPrice] = useState("");
   const [busdPrice, setBusdPrice] = useState("");
@@ -38,10 +38,10 @@ export function TransactionContextProvider({ children }) {
     return () => clearInterval(interval);
   }, []);
 
-  function buyBitcoins(payingValue) {
+  function buyBitcoins(payingValue: string) {
     if (Number(payingValue) <= user.wallet.currencies["BRL"].credit) {
       const newWallet = { ...user.wallet };
-      const bitcoinValue = Math.floor((payingValue / bitcoinPrice) * 100) / 100;
+      const bitcoinValue = Math.floor((Number(payingValue) / Number(bitcoinPrice)) * 100) / 100;
 
       newWallet.currencies["BRL"].credit =
         Number(user.wallet.currencies["BRL"].credit) - Number(payingValue);
@@ -69,10 +69,10 @@ export function TransactionContextProvider({ children }) {
     }
   }
 
-  function buyBusd(payingValue) {
+  function buyBusd(payingValue: string) {
     if (Number(payingValue) <= user.wallet.currencies["BRL"].credit) {
       const newWallet = { ...user.wallet };
-      const busdValue = Math.floor((payingValue / busdPrice) * 100) / 100;
+      const busdValue = Math.floor((Number(payingValue) / Number(busdPrice)) * 100) / 100;
 
       newWallet.currencies["BRL"].credit =
         Number(user.wallet.currencies["BRL"].credit) - Number(payingValue);
@@ -97,11 +97,11 @@ export function TransactionContextProvider({ children }) {
     } else toast.error("Ops! Saldo insuficiente");
   }
 
-  function sellBitcoins(sellingAmount) {
+  function sellBitcoins(sellingAmount: string) {
     if (Number(sellingAmount) <= user.wallet.currencies["BTC"].credit) {
       const newWallet = { ...user.wallet };
       const receivingValue =
-        Math.floor(sellingAmount * bitcoinPrice * 100) / 100;
+        Math.floor(Number(sellingAmount) * Number(bitcoinPrice) * 100) / 100;
 
       newWallet.currencies["BTC"].credit =
         Number(user.wallet.currencies["BTC"].credit) - Number(sellingAmount);
@@ -126,10 +126,10 @@ export function TransactionContextProvider({ children }) {
     } else toast.error("Ops! Saldo insuficiente");
   }
 
-  function sellBusd(sellingAmount) {
+  function sellBusd(sellingAmount: string) {
     if (Number(sellingAmount) <= user.wallet.currencies["BUSD"].credit) {
       const newWallet = { ...user.wallet };
-      const receivingValue = Math.floor(sellingAmount * busdPrice * 100) / 100;
+      const receivingValue = Math.floor(Number(sellingAmount) * Number(busdPrice) * 100) / 100;
 
       newWallet.currencies["BUSD"].credit =
         Number(user.wallet.currencies["BUSD"].credit) - Number(sellingAmount);
@@ -154,12 +154,12 @@ export function TransactionContextProvider({ children }) {
     } else toast.error("Ops! Saldo insuficiente");
   }
 
-  function exchangeBtcToBusd(btcValue) {
+  function exchangeBtcToBusd(btcValue: string) {
     console.log("btcValue", btcValue);
     if (Number(btcValue) <= user.wallet.currencies["BTC"].credit) {
       const newWallet = { ...user.wallet };
-      const btcToBusdPrice = bitcoinPrice / busdPrice;
-      const receivingValue = Math.floor(btcValue * btcToBusdPrice * 100) / 100;
+      const btcToBusdPrice = Number(bitcoinPrice) / Number(busdPrice);
+      const receivingValue = Math.floor(Number(btcValue) * btcToBusdPrice * 100) / 100;
 
       newWallet.currencies["BTC"].credit =
         Number(user.wallet.currencies["BTC"].credit) - Number(btcValue);
@@ -184,11 +184,11 @@ export function TransactionContextProvider({ children }) {
       toast.success("Cambio feito com sucesso!");
     } else toast.error("Ops! Saldo insuficiente");
   }
-  function exchangeBusdToBtc(busdValue) {
+  function exchangeBusdToBtc(busdValue: string) {
     if (Number(busdValue) <= user.wallet.currencies["BUSD"].credit) {
       const newWallet = { ...user.wallet };
-      const busdToBtcPrice = busdPrice / bitcoinPrice;
-      const receivingValue = Math.floor(busdValue * busdToBtcPrice * 100) / 100;
+      const busdToBtcPrice = Number(busdPrice) / Number(bitcoinPrice);
+      const receivingValue = Math.floor(Number(busdValue) * busdToBtcPrice * 100) / 100;
 
       newWallet.currencies["BUSD"].credit =
         Number(user.wallet.currencies["BUSD"].credit) - Number(busdValue);
@@ -213,7 +213,7 @@ export function TransactionContextProvider({ children }) {
     } else toast.error("Ops! Saldo insuficiente");
   }
 
-  function negotiate({ transactionId, inputValue }) {
+  function negotiate({ transactionId, inputValue }: {transactionId: string, inputValue: string}) {
     switch (transactionId) {
       case "brlToBtc":
         return buyBitcoins(inputValue);

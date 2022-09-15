@@ -1,10 +1,10 @@
-export function formatNumberToCurrencyString(number) {
+export function formatNumberToCurrencyString(numberString: string) {
   return new Intl.NumberFormat("pt-BR", {
     maximumFractionDigits: 2,
     minimumFractionDigits: 2,
-  }).format(number);
+  }).format(Number(numberString));
 }
 
-export function formatCurrencyStringToNumber(numberString) {
+export function formatCurrencyStringToNumber(numberString: string) {
   return Number(numberString.replace(".", "").replace(",", "."));
 }

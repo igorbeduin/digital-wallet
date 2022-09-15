@@ -3,19 +3,24 @@ import { useAuthenticationContext } from "contexts/AuthenticationContext";
 export function useAuthentication() {
   const { loginUser } = useAuthenticationContext();
 
-  function login({ username, password }) {
-    const users = JSON.parse(localStorage.getItem("users"));
+  interface User {
+    username: string,
+    password: string,
+  }
+
+  function login({ username, password }: {username: string, password: string}) {
+    const users = JSON.parse(localStorage.getItem("users") || "{}");
     const userFound = !!users.find(
-      (user) => user.username === username && user.password === password
+      (user: User) => user.username === username && user.password === password
     );
     if (userFound) loginUser(username);
     else throw new Error("User not found");
   }
 
-  function signUp({ username, password, passwordValidation }) {
-    const users = JSON.parse(localStorage.getItem("users"));
+  function signUp({ username, password, passwordValidation }: { username: string, password: string, passwordValidation: string }) {
+    const users = JSON.parse(localStorage.getItem("users") || "{}");
     const userFound = !!users.find(
-      (user) => user.username === username && user.password === password
+      (user: User) => user.username === username && user.password === password
     );
     if (userFound) throw new Error("Ops! Parece que esse usuário já existe");
     else if (password !== passwordValidation)

@@ -15,6 +15,8 @@
   - [x] Dashboard
 - [x] Dashboard subpages navigation 
 - [ ] Subpages content
-  - [ ] Summary
-  - [ ] Negotiate
-  - [ ] Transactions History
+  - [x] Summary
+  - [x] Negotiate
+  - [x] Transactions History
+- [ ] Renomear hook 'useAuthorization' para 'useUsersDb' ou algo do tipo
+- [ ] Renomear contexto 'TransactionContext' para 'TransactionsContext' ou algo do tipo

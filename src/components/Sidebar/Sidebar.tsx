@@ -6,16 +6,17 @@ import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useAuthenticationContext } from "contexts/AuthenticationContext";
 
 import pages from "consts/pages";
+import { Logo } from "components/Logo";
 
 export function Sidebar() {
   const { logout } = useAuthenticationContext();
 
   return (
     <>
-      <div className="flex justify-center items-center my-4">
-        <p className="text-5xl">LOGO</p>
+      <div className="flex justify-center items-center">
+        <Logo />
       </div>
-      <div className="p-4">
+      <div className="px-4 py-2">
         <hr />
       </div>
       <ul>
@@ -31,7 +32,7 @@ export function Sidebar() {
           </div>
         ))}
       </ul>
-      <div className="p-4">
+      <div className="px-4 py-2">
         <hr />
       </div>
       <button

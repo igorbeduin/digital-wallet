@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
+import { Logo } from "components/Logo";
 import { useAuthentication } from "hooks/useAuthentication";
 
 export function Login() {
@@ -18,8 +19,8 @@ export function Login() {
       <div className="bg-slate-50 h-screen flex flex-row justify-center items-start py-32">
         <div className="h-fit-content w-8/12 max-w-screen-md flex flex-col justify-center items-center p-2">
           <div className="mb-2 flex flex-col justify-center items-center">
-            <p className="text-5xl">LOGO</p>
-            <p className="text-lg">Entre com a sua conta</p>
+            <Logo size="big"/>
+            <p>Entre com a sua conta</p>
           </div>
           <form
             onSubmit={(event) => {
@@ -84,7 +85,7 @@ export function Login() {
             </button>
             <div className="flex flex-row w-full my-4 justify-center items-center">
               <hr className="w-5/12 mx-2" />
-              <p>Ou</p>
+              <p>ou</p>
               <hr className="w-5/12 mx-2" />
             </div>
             <Link

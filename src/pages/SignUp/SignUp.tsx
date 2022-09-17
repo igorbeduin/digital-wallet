@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useAuthentication } from "hooks/useAuthentication";
 import { useWalletsDb } from "hooks/useWalletsDb";
 import { useHistoryDb } from "hooks/useHistoryDb";
+import { Logo } from "components/Logo";
 
 export function SignUp() {
   const [usernameInputValue, setUsernameInputValue] = useState("");
@@ -24,8 +25,8 @@ export function SignUp() {
       <div className="bg-slate-50 h-screen flex flex-row justify-center items-start py-32">
         <div className="h-fit-content w-8/12 max-w-screen-md flex flex-col justify-center items-center p-2">
           <div className="mb-2 flex flex-col justify-center items-center">
-            <p className="text-5xl">LOGO</p>
-            <p className="text-lg">Faça seu cadastro</p>
+            <Logo size="big" />
+            <p>Faça seu cadastro</p>
           </div>
           <form
             onSubmit={(event) => {

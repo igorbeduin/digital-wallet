@@ -18,11 +18,6 @@ const pages: Array<PageInterface> = [
     icon: faHouse,
   },
   {
-    name: "Negociar",
-    id: "/negotiate",
-    icon: faMoneyBill,
-  },
-  {
     name: "Extrato de transações",
     id: "/transactions",
     icon: faMoneyCheck,

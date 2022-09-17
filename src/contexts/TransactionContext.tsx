@@ -4,8 +4,37 @@ import { toast } from "react-toastify";
 
 import { useAuthenticationContext } from "./AuthenticationContext";
 import { useHistoryDb } from "hooks/useHistoryDb";
+ 
+interface TransactionContextInterface {
+    maxBrlValueLength: number,
+    maxBtcValueLength: number,
+    maxBusdValueLength: number,
+    bitcoinPrice: string,
+    busdPrice: string,
+    buyBitcoins: (_value: string) => void | (() => void),
+    buyBusd: (_value: string) => void | (() => void),
+    sellBitcoins: (_value: string) => void | (() => void),
+    sellBusd: (_value: string) => void | (() => void),
+    exchangeBtcToBusd: (_value: string) => void | (() => void),
+    exchangeBusdToBtc: (_value: string) => void | (() => void),
+    negotiate: ({ transactionId , inputValue }: { transactionId: string , inputValue: string }) => void | (() => void),
+  }
 
-const TransactionContext = createContext({});
+const initialContext: TransactionContextInterface = {
+  maxBrlValueLength: 0,
+  maxBtcValueLength: 0,
+  maxBusdValueLength: 0,
+  bitcoinPrice: "",
+  busdPrice: "",
+  buyBitcoins: () => {},
+  buyBusd: () => {},
+  sellBitcoins: () => {},
+  sellBusd: () => {},
+  exchangeBtcToBusd: () => {},
+  exchangeBusdToBtc: () => {},
+  negotiate: () => {},
+};
+const TransactionContext = createContext(initialContext);
 
 // eslint-disable-next-line react/prop-types
 export function TransactionContextProvider({ children }: {children: React.ReactNode}) {
@@ -59,7 +88,7 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         userId: user.username,
         currency: "BTC",
         operation: "addition",
-        value: bitcoinValue,
+        value: String(bitcoinValue),
         description: "Compra de bitcoins",
       });
       toast.success("Compra feita com sucesso!");
@@ -90,7 +119,7 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         userId: user.username,
         currency: "BUSD",
         operation: "addition",
-        value: busdValue,
+        value: String(busdValue),
         description: "Compra de busd",
       });
       toast.success("Compra feita com sucesso!");
@@ -112,7 +141,7 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         userId: user.username,
         currency: "BRL",
         operation: "addition",
-        value: receivingValue,
+        value: String(receivingValue),
         description: "Venda de bitcoins",
       });
       setUserNewEntry({
@@ -140,7 +169,7 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         userId: user.username,
         currency: "BRL",
         operation: "addition",
-        value: receivingValue,
+        value: String(receivingValue),
         description: "Venda de busd",
       });
       setUserNewEntry({
@@ -171,7 +200,7 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         userId: user.username,
         currency: "BUSD",
         operation: "addition",
-        value: receivingValue,
+        value: String(receivingValue),
         description: "Cambio de bitcoin para busd",
       });
       setUserNewEntry({
@@ -199,7 +228,7 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         userId: user.username,
         currency: "BTC",
         operation: "addition",
-        value: receivingValue,
+        value: String(receivingValue),
         description: "Cambio de busd para bitcoin",
       });
       setUserNewEntry({
@@ -215,18 +244,18 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
 
   function negotiate({ transactionId, inputValue }: {transactionId: string, inputValue: string}) {
     switch (transactionId) {
-      case "brlToBtc":
-        return buyBitcoins(inputValue);
-      case "btcToBrl":
-        return sellBitcoins(inputValue);
-      case "brlToBusd":
-        return buyBusd(inputValue);
-      case "busdToBrl":
-        return sellBusd(inputValue);
-      case "btcToBusd":
-        return exchangeBtcToBusd(inputValue);
-      case "busdToBtc":
-        return exchangeBusdToBtc(inputValue);
+    case "brlToBtc":
+      return buyBitcoins(inputValue);
+    case "btcToBrl":
+      return sellBitcoins(inputValue);
+    case "brlToBusd":
+      return buyBusd(inputValue);
+    case "busdToBrl":
+      return sellBusd(inputValue);
+    case "btcToBusd":
+      return exchangeBtcToBusd(inputValue);
+    case "busdToBtc":
+      return exchangeBusdToBtc(inputValue);
     }
   }
 

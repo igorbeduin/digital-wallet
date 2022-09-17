@@ -1,6 +1,6 @@
 export function useHistoryDb() {
 
-  interface UserNewEntry {
+  interface UserNewEntryInterface {
     userId: string,
     currency: string,
     operation: string,
@@ -28,7 +28,7 @@ export function useHistoryDb() {
     operation,
     value,
     description,
-  }: UserNewEntry) {
+  }: UserNewEntryInterface) {
     console.log("input", {
       userId,
       currency,

@@ -1,14 +1,29 @@
 import React, { createContext, useContext, useState } from "react";
+
+import { WalletInterface } from "consts/wallets";
 import { useWalletsDb } from "hooks/useWalletsDb";
 
-const AuthenticationContext = createContext({
-  isSignedIn: false,
-});
+interface AuthenticationContextInterface {
+  isSignedIn: boolean
+  user: {username: string, wallet: WalletInterface}
+  loginUser: (userId: string) => void | (() => void)
+  logout: () => void
+  updateUserWallet: (newWallet: WalletInterface) => void | (() => void)
+}
 
-// eslint-disable-next-line react/prop-types
+const initialContext: AuthenticationContextInterface = {
+  isSignedIn: false,
+  user: {username: "", wallet: { currencies: {}}},
+  loginUser: () => {},
+  logout: () => {},
+  updateUserWallet: () => {},
+};
+
+const AuthenticationContext = createContext(initialContext);
+
 export function AuthenticationContextProvider({ children }: {children: React.ReactNode}) {
   const [isSignedIn, setIsSignedIn] = useState(true);
-  const [user, setUser] = useState({username: "", wallet: {}});
+  const [user, setUser] = useState({username: "", wallet: { currencies: {}}});
   const { getUserWallet, setUserWallet } = useWalletsDb();
 
   if (isSignedIn && !user.username) logout();
@@ -20,11 +35,11 @@ export function AuthenticationContextProvider({ children }: {children: React.Rea
   }
 
   function logout() {
-    setUser({username: "", wallet: {}});
+    setUser({username: "", wallet: { currencies: {}}});
     setIsSignedIn(false);
   }
 
-  function updateUserWallet(newWallet: object) {
+  function updateUserWallet(newWallet: WalletInterface) {
     setUser((prev) => ({ ...prev, wallet: newWallet }));
     setUserWallet({ userId: user.username, newWallet });
   }

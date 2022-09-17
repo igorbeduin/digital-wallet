@@ -31,7 +31,9 @@ export function Login() {
                 });
               } catch (err) {
                 setLoginError(true);
-                toast.error(err.message);
+                if (err instanceof Error) {
+                  toast.error(err.message);
+                }
                 setUsernameInputValue("");
                 setPasswordInputValue("");
               }

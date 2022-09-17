@@ -1,4 +1,7 @@
 import React from "react";
+
+import { NegotiationCard } from "components/NegotiationCard";
+
 import { useAuthenticationContext } from "contexts/AuthenticationContext";
 import { formatNumberToCurrencyString } from "utils/displayFunctions";
 import { useTransactionContext } from "contexts/TransactionContext";
@@ -10,7 +13,7 @@ export function Home() {
   return (
     <>
       <p className="text-2xl mb-2 text-gray-800">Sua Carteira</p>
-      <div className="flex flex-row gap-x-4 w-full mb-4">
+      <div className="flex flex-row gap-4 w-full mb-4 flex-wrap">
         {Object.values(user.wallet.currencies).map((currency) => {
           return (
             <div
@@ -34,7 +37,7 @@ export function Home() {
         })}
       </div>
       <p className="text-2xl mb-2 text-gray-800">Últimas cotações</p>
-      <div className="flex flex-row gap-x-4 w-full">
+      <div className="flex flex-row gap-4 w-full mb-4 flex-wrap">
         <div className="bg-slate-50 min-w-fit w-48 h-fit rounded-lg p-4 shadow ">
           <p className="text-l mb-2 text-green-500">BTC</p>
           <p className="text-3xl font-bold text-gray-800">
@@ -46,6 +49,22 @@ export function Home() {
           <p className="text-3xl font-bold text-gray-800">
             {formatNumberToCurrencyString(busdPrice)}
           </p>
+        </div>
+      </div>
+
+      <p className="text-2xl mb-2 text-gray-800">Negociar</p>
+      <div className="flex flex-row gap-4 w-full mb-4 flex-wrap">
+        <div className="flex w-full flex-row justify-center items-start gap-x-4">
+          <NegotiationCard transactionId="brlToBtc" transactionType="buying" />
+          <NegotiationCard transactionId="btcToBrl" transactionType="selling" />
+        </div>
+        <div className="flex w-full flex-row justify-center items-start gap-x-4">
+          <NegotiationCard transactionId="brlToBusd" transactionType="buying" />
+          <NegotiationCard transactionId="busdToBrl" transactionType="selling" />
+        </div>
+        <div className="flex w-full flex-row justify-center items-start gap-x-4">
+          <NegotiationCard transactionId="btcToBusd" transactionType="exchange" />
+          <NegotiationCard transactionId="busdToBtc" transactionType="exchange" />
         </div>
       </div>
     </>

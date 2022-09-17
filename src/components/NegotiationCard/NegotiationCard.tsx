@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { formatNumberToCurrencyString } from "utils/displayFunctions";
 import { useTransactionContext } from "contexts/TransactionContext";
 import { useAuthenticationContext } from "contexts/AuthenticationContext";
+import { toast } from "react-toastify";
 
 // eslint-disable-next-line react/prop-types
 export function NegotiationCard({ transactionId, transactionType }: { transactionId: string, transactionType: string }) {
@@ -72,46 +73,64 @@ export function NegotiationCard({ transactionId, transactionType }: { transactio
   }
 
   return (
-    <div className="flex flex-col w-64">
-      <input
-        className={
-          inputError
-            ? "rounded-t-lg p-2 border border-solid shadow-sm focus:border-red-400 focus:outline-none focus:shadow-sm focus:shadow-red-400"
-            : "rounded-t-lg p-2 border border-solid shadow-sm focus:border-green-400 focus:outline-none focus:shadow-sm focus:shadow-green-400"
-        }
-        onChange={(event) => handleNumberInputValue(event.target.value)}
-        placeholder={inputPlaceholder}
-        value={inputValue}
-      />
-      <button
-        className={
-          inputError
-            ? "bg-green-300 text-white rounded-b-lg mb-2 w-full h-8"
-            : "bg-green-400 text-white rounded-b-lg mb-2 w-full h-8 hover:bg-green-500"
-        }
-        onClick={() => {
+    <div className="flex bg-slate-50 flex-col w-5/6 shadow rounded-lg">
+      <form 
+        onSubmit={(event) => {
+          event.preventDefault();
           try {
+            if (Number(inputValue) === 0) {
+              setInputError("Tente novamente");
+              throw new Error("Não é possível fazer operações com valor '0'");
+            }
             negotiate({ transactionId, inputValue });
             setInputValue("");
           } catch (err) {
-            console.log(err);
+            if (err instanceof Error) {
+              toast.error(err.message);
+            }
           }
-        }}
-        disabled={inputError ? true : false}
-      >
-        {buttonText}
-      </button>
+        }}>
+        <div className="w-full h-full p-4">
+          <p className="text-green-500 text-l mb-2">{inputPlaceholder}</p>
+          <p className="text-xs font-bold text-gray-800 mb-2">
+            {`Disponível:  ${formatNumberToCurrencyString(user.wallet.currencies[currencyId].credit)}`}
+          </p>
+          <input
+            className={
+              inputError
+                ? "w-2 rounded-lg p-2 border border-solid border-white shadow-sm focus:border-red-400 focus:outline-none focus:shadow-sm focus:shadow-red-400"
+                : "w-full rounded-lg p-2 border border-solid border-white shadow-sm focus:border-green-400 focus:outline-none focus:shadow-sm focus:shadow-green-400"
+            }
+            onChange={(event) => handleNumberInputValue(event.target.value)}
+            placeholder={`Valor em ${currencyId}`}
+            value={inputValue}
+          />
 
-      <div className="p-1">
-        <p className="text-sm text-red-500">{inputError || ""}</p>
-      </div>
-      <div className="p-1 max-w-full">
-        <p className="text-sm max-w-full text-green-500">
-          {inputValue
-            ? `Valor a receber: ${formatNumberToCurrencyString(Number(inputValue) / Number(currencyPrice))}`
-            : ""}
-        </p>
-      </div>
+          <div className="p-1">
+            <p className="text-sm text-red-500">{inputError || ""}</p>
+          </div>
+          <div className="p-1 max-w-full">
+            <p className="text-sm max-w-full text-green-500">
+              {inputValue
+                ? `Valor a receber: ${formatNumberToCurrencyString(Number(inputValue) / Number(currencyPrice))}`
+                : ""}
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          className={
+            inputError
+              ? "bg-green-300 text-white rounded-b-lg w-full h-8"
+              : "bg-green-400 text-white rounded-b-lg w-full h-8 hover:bg-green-500"
+          }
+
+          disabled={inputError ? true : false}
+        >
+          {buttonText}
+        </button>
+      </form>
     </div>
   );
 }

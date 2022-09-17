@@ -20,3 +20,5 @@
   - [x] Transactions History
 - [ ] Renomear hook 'useAuthorization' para 'useUsersDb' ou algo do tipo
 - [ ] Renomear contexto 'TransactionContext' para 'TransactionsContext' ou algo do tipo
+
+- [ ] Tooltip nas últimas cotações (tempo de update - data/hora de atualização)

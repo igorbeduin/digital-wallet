@@ -1,6 +1,8 @@
+import { WalletCollectionInterface, WalletInterface } from "consts/wallets";
+
 export function useWalletsDb() {
-  function initializeUserWallet({ userId }) {
-    const wallets = JSON.parse(localStorage.getItem("wallets"));
+  function initializeUserWallet({ userId }: {userId: string}) {
+    const wallets: WalletCollectionInterface = JSON.parse(localStorage.getItem("wallets") || "{}");
 
     wallets[userId] = {
       currencies: {
@@ -21,16 +23,17 @@ export function useWalletsDb() {
         },
       },
     };
+
     localStorage.setItem("wallets", JSON.stringify(wallets));
   }
 
-  function getUserWallet(userId) {
-    const wallets = JSON.parse(localStorage.getItem("wallets"));
+  function getUserWallet({userId}: {userId: string}) {
+    const wallets: WalletCollectionInterface = JSON.parse(localStorage.getItem("wallets") || "{}");
     return wallets[userId];
   }
 
-  function setUserWallet({ userId, newWallet }) {
-    const wallets = JSON.parse(localStorage.getItem("wallets"));
+  function setUserWallet({ userId, newWallet }: { userId: string, newWallet: WalletInterface }) {
+    const wallets: WalletCollectionInterface = JSON.parse(localStorage.getItem("wallets") || "{}");
     wallets[userId] = newWallet;
     localStorage.setItem("wallets", JSON.stringify(wallets));
   }

@@ -42,7 +42,9 @@ export function SignUp() {
                 navigate("/login");
               } catch (err) {
                 setSignUpError(true);
-                toast.error(err.message);
+                if (err instanceof Error) {
+                  toast.error(err.message);
+                }
                 setUsernameInputValue("");
                 setPasswordInputValue("");
                 setPasswordValidationInputValue("");

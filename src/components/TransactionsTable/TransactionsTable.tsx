@@ -3,7 +3,14 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-export function TransactionsTable({ title, values }) {
+interface HistoryEntryInterface {
+  date: string
+  description: string
+  value: string
+  operation: string
+}
+
+export function TransactionsTable({ title, values }: { title: string, values: Array<HistoryEntryInterface> }) {
   const [pageIndex, setPageIndex] = useState(0);
   const rowsPerPage = 4;
   const maxPage = Math.ceil(values.length / rowsPerPage) - 1;
@@ -12,17 +19,13 @@ export function TransactionsTable({ title, values }) {
     (pageIndex + 1) * rowsPerPage
   );
 
-  function handleTurnPage(pagesToTurn) {
+  function handleTurnPage(pagesToTurn: number) {
     const targetPage = pageIndex + pagesToTurn;
     console.log("handleTurnPage", targetPage, maxPage);
     if (targetPage >= 0 && targetPage <= maxPage) {
       setPageIndex(targetPage);
     }
   }
-
-  console.log("pageIndex", pageIndex);
-  console.log("showingList", showingList);
-  console.log("maxPage", maxPage);
 
   return (
     <>
@@ -59,7 +62,7 @@ export function TransactionsTable({ title, values }) {
             <div className="w-full flex justify-center items-end">
               <button
                 className={
-                  pageIndex === 0 ? `m-4 text-gray-300` : `m-4 text-green-500`
+                  pageIndex === 0 ? "m-4 text-gray-300" : "m-4 text-green-500"
                 }
                 onClick={() => handleTurnPage(-1)}
                 disabled={pageIndex === 0}
@@ -69,8 +72,8 @@ export function TransactionsTable({ title, values }) {
               <button
                 className={
                   pageIndex === maxPage
-                    ? `m-4 text-gray-300`
-                    : `m-4 text-green-500`
+                    ? "m-4 text-gray-300"
+                    : "m-4 text-green-500"
                 }
                 disabled={pageIndex === maxPage}
               >

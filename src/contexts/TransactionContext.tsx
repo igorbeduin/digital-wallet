@@ -4,11 +4,40 @@ import { toast } from "react-toastify";
 
 import { useAuthenticationContext } from "./AuthenticationContext";
 import { useHistoryDb } from "hooks/useHistoryDb";
+ 
+interface TransactionContextInterface {
+    maxBrlValueLength: number,
+    maxBtcValueLength: number,
+    maxBusdValueLength: number,
+    bitcoinPrice: string,
+    busdPrice: string,
+    buyBitcoins: (_value: string) => void | (() => void),
+    buyBusd: (_value: string) => void | (() => void),
+    sellBitcoins: (_value: string) => void | (() => void),
+    sellBusd: (_value: string) => void | (() => void),
+    exchangeBtcToBusd: (_value: string) => void | (() => void),
+    exchangeBusdToBtc: (_value: string) => void | (() => void),
+    negotiate: ({ transactionId , inputValue }: { transactionId: string , inputValue: string }) => void | (() => void),
+  }
 
-const TransactionContext = createContext({});
+const initialContext: TransactionContextInterface = {
+  maxBrlValueLength: 0,
+  maxBtcValueLength: 0,
+  maxBusdValueLength: 0,
+  bitcoinPrice: "",
+  busdPrice: "",
+  buyBitcoins: () => {},
+  buyBusd: () => {},
+  sellBitcoins: () => {},
+  sellBusd: () => {},
+  exchangeBtcToBusd: () => {},
+  exchangeBusdToBtc: () => {},
+  negotiate: () => {},
+};
+const TransactionContext = createContext(initialContext);
 
 // eslint-disable-next-line react/prop-types
-export function TransactionContextProvider({ children }) {
+export function TransactionContextProvider({ children }: {children: React.ReactNode}) {
   const { user, updateUserWallet } = useAuthenticationContext();
   const [bitcoinPrice, setBitcoinPrice] = useState("");
   const [busdPrice, setBusdPrice] = useState("");
@@ -38,10 +67,10 @@ export function TransactionContextProvider({ children }) {
     return () => clearInterval(interval);
   }, []);
 
-  function buyBitcoins(payingValue) {
+  function buyBitcoins(payingValue: string) {
     if (Number(payingValue) <= user.wallet.currencies["BRL"].credit) {
       const newWallet = { ...user.wallet };
-      const bitcoinValue = Math.floor((payingValue / bitcoinPrice) * 100) / 100;
+      const bitcoinValue = Math.floor((Number(payingValue) / Number(bitcoinPrice)) * 100) / 100;
 
       newWallet.currencies["BRL"].credit =
         Number(user.wallet.currencies["BRL"].credit) - Number(payingValue);
@@ -59,7 +88,7 @@ export function TransactionContextProvider({ children }) {
         userId: user.username,
         currency: "BTC",
         operation: "addition",
-        value: bitcoinValue,
+        value: String(bitcoinValue),
         description: "Compra de bitcoins",
       });
       toast.success("Compra feita com sucesso!");
@@ -69,10 +98,10 @@ export function TransactionContextProvider({ children }) {
     }
   }
 
-  function buyBusd(payingValue) {
+  function buyBusd(payingValue: string) {
     if (Number(payingValue) <= user.wallet.currencies["BRL"].credit) {
       const newWallet = { ...user.wallet };
-      const busdValue = Math.floor((payingValue / busdPrice) * 100) / 100;
+      const busdValue = Math.floor((Number(payingValue) / Number(busdPrice)) * 100) / 100;
 
       newWallet.currencies["BRL"].credit =
         Number(user.wallet.currencies["BRL"].credit) - Number(payingValue);
@@ -90,18 +119,18 @@ export function TransactionContextProvider({ children }) {
         userId: user.username,
         currency: "BUSD",
         operation: "addition",
-        value: busdValue,
+        value: String(busdValue),
         description: "Compra de busd",
       });
       toast.success("Compra feita com sucesso!");
     } else toast.error("Ops! Saldo insuficiente");
   }
 
-  function sellBitcoins(sellingAmount) {
+  function sellBitcoins(sellingAmount: string) {
     if (Number(sellingAmount) <= user.wallet.currencies["BTC"].credit) {
       const newWallet = { ...user.wallet };
       const receivingValue =
-        Math.floor(sellingAmount * bitcoinPrice * 100) / 100;
+        Math.floor(Number(sellingAmount) * Number(bitcoinPrice) * 100) / 100;
 
       newWallet.currencies["BTC"].credit =
         Number(user.wallet.currencies["BTC"].credit) - Number(sellingAmount);
@@ -112,7 +141,7 @@ export function TransactionContextProvider({ children }) {
         userId: user.username,
         currency: "BRL",
         operation: "addition",
-        value: receivingValue,
+        value: String(receivingValue),
         description: "Venda de bitcoins",
       });
       setUserNewEntry({
@@ -126,10 +155,10 @@ export function TransactionContextProvider({ children }) {
     } else toast.error("Ops! Saldo insuficiente");
   }
 
-  function sellBusd(sellingAmount) {
+  function sellBusd(sellingAmount: string) {
     if (Number(sellingAmount) <= user.wallet.currencies["BUSD"].credit) {
       const newWallet = { ...user.wallet };
-      const receivingValue = Math.floor(sellingAmount * busdPrice * 100) / 100;
+      const receivingValue = Math.floor(Number(sellingAmount) * Number(busdPrice) * 100) / 100;
 
       newWallet.currencies["BUSD"].credit =
         Number(user.wallet.currencies["BUSD"].credit) - Number(sellingAmount);
@@ -140,7 +169,7 @@ export function TransactionContextProvider({ children }) {
         userId: user.username,
         currency: "BRL",
         operation: "addition",
-        value: receivingValue,
+        value: String(receivingValue),
         description: "Venda de busd",
       });
       setUserNewEntry({
@@ -154,12 +183,12 @@ export function TransactionContextProvider({ children }) {
     } else toast.error("Ops! Saldo insuficiente");
   }
 
-  function exchangeBtcToBusd(btcValue) {
+  function exchangeBtcToBusd(btcValue: string) {
     console.log("btcValue", btcValue);
     if (Number(btcValue) <= user.wallet.currencies["BTC"].credit) {
       const newWallet = { ...user.wallet };
-      const btcToBusdPrice = bitcoinPrice / busdPrice;
-      const receivingValue = Math.floor(btcValue * btcToBusdPrice * 100) / 100;
+      const btcToBusdPrice = Number(bitcoinPrice) / Number(busdPrice);
+      const receivingValue = Math.floor(Number(btcValue) * btcToBusdPrice * 100) / 100;
 
       newWallet.currencies["BTC"].credit =
         Number(user.wallet.currencies["BTC"].credit) - Number(btcValue);
@@ -171,7 +200,7 @@ export function TransactionContextProvider({ children }) {
         userId: user.username,
         currency: "BUSD",
         operation: "addition",
-        value: receivingValue,
+        value: String(receivingValue),
         description: "Cambio de bitcoin para busd",
       });
       setUserNewEntry({
@@ -184,11 +213,11 @@ export function TransactionContextProvider({ children }) {
       toast.success("Cambio feito com sucesso!");
     } else toast.error("Ops! Saldo insuficiente");
   }
-  function exchangeBusdToBtc(busdValue) {
+  function exchangeBusdToBtc(busdValue: string) {
     if (Number(busdValue) <= user.wallet.currencies["BUSD"].credit) {
       const newWallet = { ...user.wallet };
-      const busdToBtcPrice = busdPrice / bitcoinPrice;
-      const receivingValue = Math.floor(busdValue * busdToBtcPrice * 100) / 100;
+      const busdToBtcPrice = Number(busdPrice) / Number(bitcoinPrice);
+      const receivingValue = Math.floor(Number(busdValue) * busdToBtcPrice * 100) / 100;
 
       newWallet.currencies["BUSD"].credit =
         Number(user.wallet.currencies["BUSD"].credit) - Number(busdValue);
@@ -199,7 +228,7 @@ export function TransactionContextProvider({ children }) {
         userId: user.username,
         currency: "BTC",
         operation: "addition",
-        value: receivingValue,
+        value: String(receivingValue),
         description: "Cambio de busd para bitcoin",
       });
       setUserNewEntry({
@@ -213,20 +242,20 @@ export function TransactionContextProvider({ children }) {
     } else toast.error("Ops! Saldo insuficiente");
   }
 
-  function negotiate({ transactionId, inputValue }) {
+  function negotiate({ transactionId, inputValue }: {transactionId: string, inputValue: string}) {
     switch (transactionId) {
-      case "brlToBtc":
-        return buyBitcoins(inputValue);
-      case "btcToBrl":
-        return sellBitcoins(inputValue);
-      case "brlToBusd":
-        return buyBusd(inputValue);
-      case "busdToBrl":
-        return sellBusd(inputValue);
-      case "btcToBusd":
-        return exchangeBtcToBusd(inputValue);
-      case "busdToBtc":
-        return exchangeBusdToBtc(inputValue);
+    case "brlToBtc":
+      return buyBitcoins(inputValue);
+    case "btcToBrl":
+      return sellBitcoins(inputValue);
+    case "brlToBusd":
+      return buyBusd(inputValue);
+    case "busdToBrl":
+      return sellBusd(inputValue);
+    case "btcToBusd":
+      return exchangeBtcToBusd(inputValue);
+    case "busdToBtc":
+      return exchangeBusdToBtc(inputValue);
     }
   }
 

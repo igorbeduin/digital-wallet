@@ -2,15 +2,16 @@ import React from "react";
 
 export function Logo({size = "medium"}: {size?: string}) {
 
-  const logoSizeToFontSizeAndSpace: {[key: string]: string} = {
-    big: "6",
-    medium: "4",
-    small: "2",
+  const logoSizeToFontSize: {[key: string]: string} = {
+    big: "text-6xl",
+    medium: "text-4xl",
+    small: "text-2xl",
   };
 
   return (
-    <div className="w-fit h-fit">
-      <p className={`text-${logoSizeToFontSizeAndSpace[size]}xl font-serif my-${logoSizeToFontSizeAndSpace[size]}`}>MyWallet</p>
+    <div className="w-fit h-fit flex flex-col justify-center items-center my-6">
+      <p className={`mb-2 font-serif ${logoSizeToFontSize[size]}`}>MyWallet</p>
+      <p className="text-md font-serif italic">Sua carteira digital</p>
     </div>
   );
 }

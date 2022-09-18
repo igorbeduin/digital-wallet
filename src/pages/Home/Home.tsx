@@ -12,7 +12,7 @@ export function Home() {
 
   return (
     <>
-      <p className="text-2xl mb-2 text-gray-800">Sua Carteira</p>
+      <p className="text-2xl mb-2 text-gray-800 font-semibold">Sua Carteira</p>
       <div className="flex flex-row gap-4 w-full mb-4 flex-wrap">
         {Object.values(user.wallet.currencies).map((currency) => {
           return (
@@ -36,7 +36,7 @@ export function Home() {
           );
         })}
       </div>
-      <p className="text-2xl mb-2 text-gray-800">Últimas cotações</p>
+      <p className="text-2xl mb-2 text-gray-800 font-semibold pt-6">Últimas cotações</p>
       <div className="flex flex-row gap-4 w-full mb-4 flex-wrap">
         <div className="bg-slate-50 min-w-fit w-48 h-fit rounded-lg p-4 shadow ">
           <p className="text-l mb-2 text-green-500">BTC</p>
@@ -52,7 +52,7 @@ export function Home() {
         </div>
       </div>
 
-      <p className="text-2xl mb-2 text-gray-800">Negociar</p>
+      <p className="text-2xl mb-2 text-gray-800 font-semibold pt-6">Negociar</p>
       <div className="flex flex-row gap-4 w-full mb-4 flex-wrap">
         <div className="flex w-full flex-row justify-center items-start gap-x-4">
           <NegotiationCard transactionId="brlToBtc" transactionType="buying" />

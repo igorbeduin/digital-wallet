@@ -1,7 +1,6 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import {
   faHouse,
-  faMoneyBill,
   faMoneyCheck,
 } from "@fortawesome/free-solid-svg-icons";
 

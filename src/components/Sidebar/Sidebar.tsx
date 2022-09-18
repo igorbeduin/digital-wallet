@@ -12,36 +12,36 @@ export function Sidebar() {
   const { logout } = useAuthenticationContext();
 
   return (
-    <>
+    <div className="fixed bottom-0 md:static flex bg-slate-50 py-4 md:p-0 md:flex-col justify-center items-center w-full shadow md:shadow-none">
       <div className="flex justify-center items-center">
         <Logo />
       </div>
-      <div className="px-4 py-2">
+      {/* <div className="md:px-4 md:py-2">
         <hr />
-      </div>
-      <ul>
+      </div> */}
+      <ul className="w-full h-full flex md:flex-col gap-10 md:gap-0 justify-center items-start">
         {pages.map((page, index) => (
-          <div key={`sidebar-item-${index}`}>
+          <div className="w-24" key={`sidebar-item-${index}`}>
             <Link
-              className="flex justify-start items-center text-gray-800 hover:text-green-500 py-2 pl-6"
+              className="flex flex-col md:flex-row justify-start items-center text-gray-800 hover:text-green-500 md:py-2 md:pl-6"
               to={page.id}
             >
               <FontAwesomeIcon icon={page.icon} />
-              <p className="pl-3">{page.name}</p>
+              <p className="md:pl-3 text-center">{page.name}</p>
             </Link>
           </div>
         ))}
+        {/* <div className="w-0 h-0 md:px-4 md:py-2">
+          <hr />
+        </div>   */}
+        <button
+          className="w-24 flex flex-col md:flex-row justify-start items-center text-gray-800 hover:text-red-500 md:py-2 md:pl-6"
+          onClick={logout}
+        >
+          <FontAwesomeIcon icon={faRightFromBracket} />
+          <p className="md:pl-3 text-center">Sair</p>
+        </button>
       </ul>
-      <div className="px-4 py-2">
-        <hr />
-      </div>
-      <button
-        className="flex w-full justify-start items-center text-gray-800 hover:text-red-500 rounded-lg py-2 pl-6"
-        onClick={logout}
-      >
-        <FontAwesomeIcon icon={faRightFromBracket} />
-        <p className="pl-3">Sair</p>
-      </button>
-    </>
+    </div>
   );
 }

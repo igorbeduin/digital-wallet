@@ -9,7 +9,7 @@ export function Logo({size = "medium"}: {size?: string}) {
   };
 
   return (
-    <div className="w-fit h-fit flex flex-col justify-center items-center my-6">
+    <div className="w-0 h-0 invisible md:visible md:w-fit md:h-fit flex flex-col justify-center items-center my-6">
       <p className={`mb-2 font-serif ${logoSizeToFontSize[size]}`}>MyWallet</p>
       <p className="text-md font-serif italic">Sua carteira digital</p>
     </div>

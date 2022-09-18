@@ -17,7 +17,7 @@ const pages: Array<PageInterface> = [
     icon: faHouse,
   },
   {
-    name: "Extrato de transações",
+    name: "Extrato",
     id: "/transactions",
     icon: faMoneyCheck,
   },

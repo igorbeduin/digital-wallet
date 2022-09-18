@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-import { useAuthentication } from "hooks/useAuthentication";
+import { useUsersDb } from "hooks/useUsersDb";
 import { useWalletsDb } from "hooks/useWalletsDb";
 import { useHistoryDb } from "hooks/useHistoryDb";
 
@@ -17,7 +17,7 @@ export function SignUp() {
 
   const navigate = useNavigate();
 
-  const { signUp } = useAuthentication();
+  const { setUser } = useUsersDb();
   const { initializeUserWallet } = useWalletsDb();
   const { initializeUserHistory } = useHistoryDb();
 
@@ -49,7 +49,7 @@ export function SignUp() {
         onSubmit={(event) => {
           event.preventDefault();
           try {
-            signUp({
+            setUser({
               username: usernameInputValue,
               password: passwordInputValue,
               passwordValidation: passwordValidationInputValue,

@@ -4,10 +4,10 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-import { useAuthentication } from "hooks/useAuthentication";
+import { useUsersDb } from "hooks/useUsersDb";
 
 export function Login() {
-  const { login } = useAuthentication();
+  const { getUser } = useUsersDb();
   const [usernameInputValue, setUsernameInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +19,7 @@ export function Login() {
         onSubmit={(event) => {
           event.preventDefault();
           try {
-            login({
+            getUser({
               username: usernameInputValue,
               password: passwordInputValue,
             });

@@ -1,6 +1,6 @@
 import { useAuthenticationContext } from "contexts/AuthenticationContext";
 
-export function useAuthentication() {
+export function useUsersDb() {
   const { loginUser } = useAuthenticationContext();
 
   interface UserInterface {
@@ -8,7 +8,7 @@ export function useAuthentication() {
     password: string,
   }
 
-  function login({ username, password }: {username: string, password: string}) {
+  function getUser({ username, password }: {username: string, password: string}) {
     const users = JSON.parse(localStorage.getItem("users") || "{}");
     const userFound = !!users.find(
       (user: UserInterface) => user.username === username && user.password === password
@@ -17,7 +17,7 @@ export function useAuthentication() {
     else throw new Error("User not found");
   }
 
-  function signUp({ username, password, passwordValidation }: { username: string, password: string, passwordValidation: string }) {
+  function setUser({ username, password, passwordValidation }: { username: string, password: string, passwordValidation: string }) {
     const users = JSON.parse(localStorage.getItem("users") || "{}");
     const userFound = !!users.find(
       (user: UserInterface) => user.username === username && user.password === password
@@ -36,5 +36,5 @@ export function useAuthentication() {
 
   function signOut() {}
 
-  return { login, signUp, signOut };
+  return { getUser, setUser, signOut };
 }

@@ -142,7 +142,7 @@ export function NegotiationCard({ transactionId, transactionType }: { transactio
             className={
               inputError
                 ? "bg-green-300 text-white rounded-b-lg w-full h-8"
-                : "bg-green-400 text-white rounded-b-lg w-full h-8 hover:bg-green-500"
+                : "bg-green-500 text-white rounded-b-lg w-full h-8 hover:bg-green-600"
             }
           >
             {buttonText}

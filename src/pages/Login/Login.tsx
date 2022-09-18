@@ -34,7 +34,7 @@ export function Login() {
         }}
         className="flex w-full flex-col justify-center items-center mt-8 md:w-8/12"
       >
-        <p className="text-sm my-2">Entre com a sua conta</p>
+        <p className="text-sm mt-2 mb-2">Entre com a sua conta</p>
         <input
           required
           value={usernameInputValue}
@@ -62,18 +62,18 @@ export function Login() {
           <button
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
-            className="absolute top-0 bottom-0 right-4"
+            className="absolute top-2 right-4"
           >
             {showPassword ? (
-              <FontAwesomeIcon icon={faEye} />
-            ) : (
               <FontAwesomeIcon icon={faEyeSlash} />
+            ) : (
+              <FontAwesomeIcon icon={faEye} />
             )}
           </button>
         </div>
         <button
           type="submit"
-          className="rounded-lg w-full bg-green-400 text-white py-1 mt-8 hover:bg-green-500"
+          className="rounded-lg w-full bg-green-500 text-white py-1 mt-8 hover:bg-green-600"
         >
               Login
         </button>

@@ -16,9 +16,6 @@ export function Navbar() {
       <div className="flex justify-center items-center">
         <Logo />
       </div>
-      {/* <div className="md:px-4 md:py-2">
-        <hr />
-      </div> */}
       <ul className="w-full h-full flex md:flex-col gap-10 md:gap-0 justify-center items-start">
         {pages.map((page, index) => (
           <div className="w-24" key={`sidebar-item-${index}`}>
@@ -31,9 +28,6 @@ export function Navbar() {
             </Link>
           </div>
         ))}
-        {/* <div className="w-0 h-0 md:px-4 md:py-2">
-          <hr />
-        </div>   */}
         <button
           className="w-24 flex flex-col md:flex-row justify-start items-center text-gray-800 hover:text-red-500 md:py-2 md:pl-6"
           onClick={logout}

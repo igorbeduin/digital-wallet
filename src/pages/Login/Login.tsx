@@ -16,11 +16,10 @@ export function Login() {
 
   return (
     <>
-      <div className="bg-slate-50 min-h-screen h-fit flex flex-row justify-center items-start py-32">
+      <div className="bg-slate-50 min-h-screen h-fit flex flex-row justify-center items-start">
         <div className="h-fit-content w-8/12 max-w-screen-md flex flex-col justify-center items-center p-2">
           <div className="mb-2 flex flex-col justify-center items-center">
             <Logo size="big"/>
-            <p>Entre com a sua conta</p>
           </div>
           <form
             onSubmit={(event) => {
@@ -39,8 +38,9 @@ export function Login() {
                 setPasswordInputValue("");
               }
             }}
-            className="flex w-8/12 flex-col justify-center items-center"
+            className="flex w-full flex-col justify-center items-center mt-8 md:w-8/12"
           >
+            <p className="text-sm my-2">Entre com a sua conta</p>
             <input
               required
               value={usernameInputValue}

@@ -19,10 +19,9 @@
   - [x] Negotiate
   - [x] Transactions History
 - [x] Implementar modal de confirmação de negociação 
-- [ ] Alterar tamanho de componentes responsivamento usando tailwindcss breakpoints
-- [ ] Implementar Sidebar responsiva
-- [ ] Renomear hook 'useAuthorization' para 'useUsersDb' ou algo do tipo
-- [ ] Renomear contexto 'TransactionContext' para 'TransactionsContext' ou algo do tipo
-- [ ] Tooltip nas últimas cotações (tempo de update - data/hora de atualização)
-- [ ] Implementar validação e helper texts para inputs do signup
+- [x] Alterar tamanho de componentes responsivamento usando tailwindcss breakpoints
+- [x] Implementar validação e helper texts para inputs do signup
+- [x] Implementar Sidebar responsiva
+- [x] Renomear hook 'useAuthorization' para 'useUsersDb' ou algo do tipo
+- [x] Renomear contexto 'TransactionContext' para 'TransactionsContext' ou algo do tipo
 - [ ] Testes

@@ -51,7 +51,7 @@ export function SignUp() {
           required
           value={usernameInputValue}
           onChange={(event) => setUsernameInputValue(event.target.value)}
-          placeholder="Username"
+          placeholder="Usuário"
           className={
             signUpError
               ? "rounded-lg my-2 p-2 h-10 w-full border border-solid shadow-sm focus:border-red-400 focus:outline-none focus:shadow-sm focus:shadow-red-400"

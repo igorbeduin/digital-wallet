@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { RoutesNavigator } from "navigation/RoutesNavigator";
 
 import { AuthenticationContextProvider } from "contexts/AuthenticationContext";
-import { TransactionContextProvider } from "contexts/TransactionContext";
+import { TransactionsContextProvider } from "contexts/TransactionsContext";
 
 import { useInitialConfiguration } from "hooks/useInitialConfiguration";
 
@@ -18,9 +18,9 @@ function App () {
     <BrowserRouter>
       <ToastContainer />
       <AuthenticationContextProvider>
-        <TransactionContextProvider>
+        <TransactionsContextProvider>
           <RoutesNavigator />
-        </TransactionContextProvider>
+        </TransactionsContextProvider>
       </AuthenticationContextProvider>
     </BrowserRouter>
   );

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useAuthenticationContext } from "./AuthenticationContext";
 import { useHistoryDb } from "hooks/useHistoryDb";
  
-interface TransactionContextInterface {
+interface TransactionsContextInterface {
     maxBrlValueLength: number,
     maxBtcValueLength: number,
     maxBusdValueLength: number,
@@ -20,7 +20,7 @@ interface TransactionContextInterface {
     negotiate: ({ transactionId , inputValue }: { transactionId: string , inputValue: string }) => void | (() => void),
   }
 
-const initialContext: TransactionContextInterface = {
+const initialContext: TransactionsContextInterface = {
   maxBrlValueLength: 0,
   maxBtcValueLength: 0,
   maxBusdValueLength: 0,
@@ -34,10 +34,10 @@ const initialContext: TransactionContextInterface = {
   exchangeBusdToBtc: () => {},
   negotiate: () => {},
 };
-const TransactionContext = createContext(initialContext);
+const TransactionsContext = createContext(initialContext);
 
 // eslint-disable-next-line react/prop-types
-export function TransactionContextProvider({ children }: {children: React.ReactNode}) {
+export function TransactionsContextProvider({ children }: {children: React.ReactNode}) {
   const { user, updateUserWallet } = useAuthenticationContext();
   const [bitcoinPrice, setBitcoinPrice] = useState("");
   const [busdPrice, setBusdPrice] = useState("");
@@ -276,13 +276,13 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
 
   return (
     <>
-      <TransactionContext.Provider value={contextValue}>
+      <TransactionsContext.Provider value={contextValue}>
         {children}
-      </TransactionContext.Provider>
+      </TransactionsContext.Provider>
     </>
   );
 }
 
-export function useTransactionContext() {
-  return useContext(TransactionContext);
+export function useTransactionsContext() {
+  return useContext(TransactionsContext);
 }

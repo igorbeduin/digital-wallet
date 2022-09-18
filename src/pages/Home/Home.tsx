@@ -4,11 +4,11 @@ import { NegotiationCard } from "components/NegotiationCard";
 
 import { useAuthenticationContext } from "contexts/AuthenticationContext";
 import { formatNumberToCurrencyString } from "utils/displayFunctions";
-import { useTransactionContext } from "contexts/TransactionContext";
+import { useTransactionsContext } from "contexts/TransactionsContext";
 
 export function Home() {
   const { user } = useAuthenticationContext();
-  const { bitcoinPrice, busdPrice } = useTransactionContext();
+  const { bitcoinPrice, busdPrice } = useTransactionsContext();
 
   return (
     <>

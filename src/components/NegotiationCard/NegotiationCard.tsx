@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { formatNumberToCurrencyString } from "utils/displayFunctions";
-import { useTransactionContext } from "contexts/TransactionContext";
+import { useTransactionsContext } from "contexts/TransactionsContext";
 import { useAuthenticationContext } from "contexts/AuthenticationContext";
 import { toast } from "react-toastify";
 import { NegotiationConfirmationModal } from "components/NegotiationConfirmationModal";
@@ -18,7 +18,7 @@ export function NegotiationCard({ transactionId, transactionType }: { transactio
     bitcoinPrice,
     busdPrice,
     negotiate,
-  } = useTransactionContext();
+  } = useTransactionsContext();
   const { user } = useAuthenticationContext();
 
   interface NegotiationInfoInterface {

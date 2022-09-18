@@ -5,6 +5,7 @@ import { useAuthenticationContext } from "contexts/AuthenticationContext";
 import { Dashboard, SignUp, Login } from "pages";
 import { Home } from "pages/Home";
 import { Transactions } from "pages/Transactions";
+import { LandingPage } from "pages/LandingPage";
 
 export function RoutesNavigator () {
   const { isSignedIn } = useAuthenticationContext();
@@ -25,8 +26,10 @@ export function RoutesNavigator () {
           : (
             <>
               <Route path="*" element={<Navigate to="/login" />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
+              <Route path="/" element={<LandingPage />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+              </Route>
             </>
           )}
       </Routes>

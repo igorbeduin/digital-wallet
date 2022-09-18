@@ -109,7 +109,7 @@ export function NegotiationCard({ transactionId, transactionType }: { transactio
             setConfirmationModalIsOpen(true);
           }}>
           <div className="w-full h-full p-4">
-            <p className="text-green-500 text-l mb-2">{inputPlaceholder}</p>
+            <p className="w-24 md:w-full text-green-500 text-l mb-2">{inputPlaceholder}</p>
             <p className="text-xs font-bold text-gray-800 mb-2">
               {`Saldo disponível:  ${formatNumberToCurrencyString(user.wallet.currencies[currencyId].credit)}`}
             </p>

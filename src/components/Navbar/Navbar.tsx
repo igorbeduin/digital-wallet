@@ -8,11 +8,11 @@ import { useAuthenticationContext } from "contexts/AuthenticationContext";
 import pages from "consts/pages";
 import { Logo } from "components/Logo";
 
-export function Sidebar() {
+export function Navbar() {
   const { logout } = useAuthenticationContext();
 
   return (
-    <div className="fixed bottom-0 md:static flex bg-slate-50 py-4 md:p-0 md:flex-col justify-center items-center w-full shadow md:shadow-none">
+    <nav className="fixed bottom-0 md:static flex bg-slate-50 py-4 md:p-0 md:flex-col justify-center items-center w-full shadow md:shadow-none">
       <div className="flex justify-center items-center">
         <Logo />
       </div>
@@ -42,6 +42,6 @@ export function Sidebar() {
           <p className="md:pl-3 text-center">Sair</p>
         </button>
       </ul>
-    </div>
+    </nav>
   );
 }

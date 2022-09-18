@@ -1,22 +1,23 @@
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import {
   faHouse,
-  faMoneyBill,
   faMoneyCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
-const pages = [
+interface PageInterface {
+  name: string,
+  id: string,
+  icon: IconDefinition,
+}
+
+const pages: Array<PageInterface> = [
   {
     name: "Início",
     id: "/home",
     icon: faHouse,
   },
   {
-    name: "Negociar",
-    id: "/negotiate",
-    icon: faMoneyBill,
-  },
-  {
-    name: "Extrato de transações",
+    name: "Extrato",
     id: "/transactions",
     icon: faMoneyCheck,
   },

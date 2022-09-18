@@ -1,6 +1,14 @@
 export function useHistoryDb() {
-  function initializeUserHistory({ userId }) {
-    const history = JSON.parse(localStorage.getItem("history"));
+
+  interface UserNewEntryInterface {
+    userId: string,
+    currency: string,
+    operation: string,
+    value: string,
+    description: string,
+  }
+  function initializeUserHistory({ userId }: {userId: string}) {
+    const history = JSON.parse(localStorage.getItem("history") || "{}");
     history[userId] = {
       BRL: [],
       BTC: [],
@@ -9,8 +17,8 @@ export function useHistoryDb() {
     localStorage.setItem("history", JSON.stringify(history));
   }
 
-  function getUserHistory(userId) {
-    const history = JSON.parse(localStorage.getItem("history"));
+  function getUserHistory({userId}: {userId: string}) {
+    const history = JSON.parse(localStorage.getItem("history") || "{}");
     return history[userId];
   }
 
@@ -20,7 +28,7 @@ export function useHistoryDb() {
     operation,
     value,
     description,
-  }) {
+  }: UserNewEntryInterface) {
     console.log("input", {
       userId,
       currency,
@@ -28,7 +36,7 @@ export function useHistoryDb() {
       value,
       description,
     });
-    const history = JSON.parse(localStorage.getItem("history"));
+    const history = JSON.parse(localStorage.getItem("history") || "{}");
     history[userId][currency] = [
       ...history[userId][currency],
       {

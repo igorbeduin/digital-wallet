@@ -18,5 +18,10 @@
   - [x] Summary
   - [x] Negotiate
   - [x] Transactions History
-- [ ] Renomear hook 'useAuthorization' para 'useUsersDb' ou algo do tipo
-- [ ] Renomear contexto 'TransactionContext' para 'TransactionsContext' ou algo do tipo
+- [x] Implementar modal de confirmação de negociação 
+- [x] Alterar tamanho de componentes responsivamento usando tailwindcss breakpoints
+- [x] Implementar validação e helper texts para inputs do signup
+- [x] Implementar Sidebar responsiva
+- [x] Renomear hook 'useAuthorization' para 'useUsersDb' ou algo do tipo
+- [x] Renomear contexto 'TransactionContext' para 'TransactionsContext' ou algo do tipo
+- [ ] Testes

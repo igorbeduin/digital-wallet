@@ -9,21 +9,30 @@ export function Transactions() {
   const { user } = useAuthenticationContext();
 
   useEffect(() => {
-    const history = getUserHistory(user.username);
+    const history = getUserHistory({userId: user.username});
     setUserHistory(history);
   }, []);
 
-  console.log("userHistory", userHistory);
+  interface HistoryEntryInterface {
+    date: string
+    description: string
+    value: string
+    operation: string
+  }
 
   return (
     <div className="h-fit">
-      {Object.entries(userHistory).map(([key, values]) => (
-        <TransactionsTable
-          key={`${key}-transactions-table`}
-          title={key}
-          values={values}
-        />
-      ))}
+      {Object.entries(userHistory).map((entry) => {
+        const title: string = entry[0];
+        const values = entry[1] as Array<HistoryEntryInterface>;
+        return(
+          <TransactionsTable
+            key={`${title}-transactions-table`}
+            title={title}
+            values={values}
+          />
+        );
+      })}
     </div>
   );
 }

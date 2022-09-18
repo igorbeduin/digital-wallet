@@ -1,4 +1,17 @@
-const wallets = {
+export interface WalletInterface {
+  currencies: {
+    [currencyId: string]: {
+      name: string
+      id: string
+      credit: number
+    }
+  }
+}
+export interface WalletCollectionInterface {
+  [userId: string]: WalletInterface
+}
+
+const wallets: WalletCollectionInterface = {
   admin: {
     currencies: {
       BRL: {

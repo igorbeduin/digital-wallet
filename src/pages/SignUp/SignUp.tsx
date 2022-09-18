@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { useAuthentication } from "hooks/useAuthentication";
 import { useWalletsDb } from "hooks/useWalletsDb";
 import { useHistoryDb } from "hooks/useHistoryDb";
-import { Logo } from "components/Logo";
 
 export function SignUp() {
   const [usernameInputValue, setUsernameInputValue] = useState("");

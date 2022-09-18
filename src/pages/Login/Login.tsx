@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-import { Logo } from "components/Logo";
 import { useAuthentication } from "hooks/useAuthentication";
 
 export function Login() {

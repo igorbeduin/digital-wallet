@@ -22,3 +22,5 @@
 - [ ] Renomear contexto 'TransactionContext' para 'TransactionsContext' ou algo do tipo
 
 - [ ] Tooltip nas últimas cotações (tempo de update - data/hora de atualização)
+- [ ] Implementar modal de confirmação de negociação 
+- [ ] Implementar validação e helper texts para inputs do signup

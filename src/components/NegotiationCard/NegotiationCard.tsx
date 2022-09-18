@@ -93,7 +93,7 @@ export function NegotiationCard({ transactionId, transactionType }: { transactio
         <div className="w-full h-full p-4">
           <p className="text-green-500 text-l mb-2">{inputPlaceholder}</p>
           <p className="text-xs font-bold text-gray-800 mb-2">
-            {`Disponível:  ${formatNumberToCurrencyString(user.wallet.currencies[currencyId].credit)}`}
+            {`Saldo disponível:  ${formatNumberToCurrencyString(user.wallet.currencies[currencyId].credit)}`}
           </p>
           <input
             className={

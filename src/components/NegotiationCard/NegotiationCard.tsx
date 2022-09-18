@@ -30,7 +30,7 @@ export function NegotiationCard({ transactionId, transactionType }: { transactio
     [transactionId: string]: NegotiationInfoInterface
   }
 
-  const transactionIdsMap: TransactionIdToNegotiationInfoInterface = {
+  const transactionIdToNegotiationInfo: TransactionIdToNegotiationInfoInterface = {
     brlToBtc: {currencyId: "BRL", maxLengthInput: maxBrlValueLength, currencyPrice: bitcoinPrice, inputPlaceholder: "Comprar Bitcoins"},
     brlToBusd: {currencyId: "BRL", maxLengthInput: maxBrlValueLength, currencyPrice: busdPrice, inputPlaceholder: "Comprar BUSDs"},
     btcToBrl: {currencyId: "BTC", maxLengthInput: maxBtcValueLength, currencyPrice: String(1 / Number(bitcoinPrice)), inputPlaceholder: "Vender Bitcoins"},
@@ -56,7 +56,7 @@ export function NegotiationCard({ transactionId, transactionType }: { transactio
   };
 
   const { currencyId, maxLengthInput, currencyPrice, inputPlaceholder} =
-    transactionIdsMap[transactionId] || {};
+    transactionIdToNegotiationInfo[transactionId] || {};
   const buttonText = transactionTypesMap[transactionType] || "";
 
   function handleNumberInputValue(value: string) {

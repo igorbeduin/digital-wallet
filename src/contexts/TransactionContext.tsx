@@ -82,14 +82,14 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         currency: "BRL",
         operation: "subtraction",
         value: payingValue,
-        description: "Compra de bitcoins",
+        description: "BRL -> BTC",
       });
       setUserNewEntry({
         userId: user.username,
         currency: "BTC",
         operation: "addition",
         value: String(bitcoinValue),
-        description: "Compra de bitcoins",
+        description: "BRL -> BTC",
       });
       toast.success("Compra feita com sucesso!");
     } else {
@@ -113,14 +113,14 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         currency: "BRL",
         operation: "subtraction",
         value: payingValue,
-        description: "Compra de busd",
+        description: "BRL -> BUSD",
       });
       setUserNewEntry({
         userId: user.username,
         currency: "BUSD",
         operation: "addition",
         value: String(busdValue),
-        description: "Compra de busd",
+        description: "BRL -> BUSD",
       });
       toast.success("Compra feita com sucesso!");
     } else toast.error("Ops! Saldo insuficiente");
@@ -142,14 +142,14 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         currency: "BRL",
         operation: "addition",
         value: String(receivingValue),
-        description: "Venda de bitcoins",
+        description: "BTC -> BRL",
       });
       setUserNewEntry({
         userId: user.username,
         currency: "BTC",
         operation: "subtraction",
         value: sellingAmount,
-        description: "Venda de bitcoins",
+        description: "BTC -> BRL",
       });
       toast.success("Venda feita com sucesso!");
     } else toast.error("Ops! Saldo insuficiente");
@@ -170,14 +170,14 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         currency: "BRL",
         operation: "addition",
         value: String(receivingValue),
-        description: "Venda de busd",
+        description: "BUSD -> BRL",
       });
       setUserNewEntry({
         userId: user.username,
         currency: "BUSD",
         operation: "subtraction",
         value: sellingAmount,
-        description: "Venda de busd",
+        description: "BUSD -> BRL",
       });
       toast.success("Venda feita com sucesso!");
     } else toast.error("Ops! Saldo insuficiente");
@@ -201,14 +201,14 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         currency: "BUSD",
         operation: "addition",
         value: String(receivingValue),
-        description: "Cambio de bitcoin para busd",
+        description: "BTC -> BUSD",
       });
       setUserNewEntry({
         userId: user.username,
         currency: "BTC",
         operation: "subtraction",
         value: btcValue,
-        description: "Cambio de bitcoin para busd",
+        description: "BTC -> BUSD",
       });
       toast.success("Cambio feito com sucesso!");
     } else toast.error("Ops! Saldo insuficiente");
@@ -229,14 +229,14 @@ export function TransactionContextProvider({ children }: {children: React.ReactN
         currency: "BTC",
         operation: "addition",
         value: String(receivingValue),
-        description: "Cambio de busd para bitcoin",
+        description: "BUSD -> BTC",
       });
       setUserNewEntry({
         userId: user.username,
         currency: "BUSD",
         operation: "subtraction",
         value: busdValue,
-        description: "Cambio de busd para bitcoin",
+        description: "BUSD -> BTC",
       });
       toast.success("Cambio feito com sucesso!");
     } else toast.error("Ops! Saldo insuficiente");

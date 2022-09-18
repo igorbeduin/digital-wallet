@@ -31,7 +31,8 @@ export function Transactions() {
             title={title}
             values={values}
           />
-        );})}
+        );
+      })}
     </div>
   );
 }

@@ -13,9 +13,13 @@ interface HistoryEntryInterface {
 
 export function TransactionsTable({ title, values }: { title: string, values: Array<HistoryEntryInterface> }) {
   const [pageIndex, setPageIndex] = useState(0);
-  const rowsPerPage = 4;
+  const [operationFilter, setOperationFilter] = useState("");
+  const rowsPerPage = 5;
   const maxPage = Math.ceil(values.length / rowsPerPage) - 1;
-  const showingList = values.slice(
+
+  const filteredList = values.filter((entry) => entry.operation.includes(operationFilter));
+
+  const paginatedList = filteredList.slice(
     pageIndex * rowsPerPage,
     (pageIndex + 1) * rowsPerPage
   );
@@ -28,10 +32,12 @@ export function TransactionsTable({ title, values }: { title: string, values: Ar
     }
   }
 
+  
+
   return (
     <>
-      <h1 className="text-2xl">{title}</h1>
-      <div className="relative bg-slate-50 rounded-lg flex flex-col justify-center items-center h-48">
+      <h1 className="text-2xl mb-2 text-gray-800 font-semibold w-full">{title}</h1>
+      <div className="bg-slate-50 rounded-lg flex flex-col justify-center items-center h-fit mb-6 w-full">
         {values.length ? (
           <>
             <div className="w-full h-full flex justify-center items-start">
@@ -44,14 +50,14 @@ export function TransactionsTable({ title, values }: { title: string, values: Ar
                   </tr>
                 </thead>
                 <tbody>
-                  {showingList.map((entry, index) => (
+                  {paginatedList.map((entry, index) => (
                     <tr
                       className="text-center"
                       key={`history-${title}-item-${index}`}
                     >
-                      <td>{new Date(entry.date).toLocaleString("pt-BR")}</td>
-                      <td>{entry.description}</td>
-                      <td>
+                      <td className="border-b border-solid py-2">{new Date(entry.date).toLocaleString("pt-BR")}</td>
+                      <td className="border-b border-solid py-2">{entry.description}</td>
+                      <td className="border-b border-solid py-2">
                         {entry.operation === "addition" ? "+" : "-"}
                         {formatNumberToCurrencyString(entry.value)}
                       </td>
@@ -60,33 +66,42 @@ export function TransactionsTable({ title, values }: { title: string, values: Ar
                 </tbody>
               </table>
             </div>
-            <div className="w-full flex justify-center items-end">
-              <button
-                className={
-                  pageIndex === 0 ? "m-4 text-gray-300" : "m-4 text-green-500"
-                }
-                onClick={() => handleTurnPage(-1)}
-                disabled={pageIndex === 0}
-              >
-                <FontAwesomeIcon icon={faArrowLeft} />
-              </button>
-              <button
-                className={
-                  pageIndex === maxPage
-                    ? "m-4 text-gray-300"
-                    : "m-4 text-green-500"
-                }
-                disabled={pageIndex === maxPage}
-              >
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  onClick={() => handleTurnPage(1)}
-                />
-              </button>
+            <div className="w-full flex gap-x-10 md:gap-x-72 justify-center items-center">
+              <div>
+                <button
+                  className={
+                    pageIndex === 0 ? "m-4 text-gray-300" : "m-4 text-green-500"
+                  }
+                  onClick={() => handleTurnPage(-1)}
+                  disabled={pageIndex === 0}
+                >
+                  <FontAwesomeIcon icon={faArrowLeft} />
+                </button>
+                <button
+                  className={
+                    pageIndex === maxPage
+                      ? "m-4 text-gray-300"
+                      : "m-4 text-green-500"
+                  }
+                  disabled={pageIndex === maxPage}
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    onClick={() => handleTurnPage(1)}
+                  />
+                </button>
+              </div>
+              <select
+                className="rounded-lg p-2 bg-white"
+                onChange={(event) => setOperationFilter(event.target.value)}>
+                <option value="">Todas</option>
+                <option value="addition">Positivas</option>
+                <option value="subtraction">Negativas</option>
+              </select>
             </div>
           </>
         ) : (
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center py-4">
             <p> Nenhuma transação disponível</p>
           </div>
         )}

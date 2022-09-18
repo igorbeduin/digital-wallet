@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { formatNumberToCurrencyString } from "utils/displayFunctions";
 
 interface HistoryEntryInterface {
   date: string
@@ -30,16 +31,16 @@ export function TransactionsTable({ title, values }: { title: string, values: Ar
   return (
     <>
       <h1 className="text-2xl">{title}</h1>
-      <div className="relative bg-slate-50 rounded-lg flex flex-col justify-center items-center h-44">
+      <div className="relative bg-slate-50 rounded-lg flex flex-col justify-center items-center h-48">
         {values.length ? (
           <>
             <div className="w-full h-full flex justify-center items-start">
-              <table className="table-auto w-full">
-                <thead className="bg-green-500 text-white rounded-lg">
+              <table className="table-fixed w-full">
+                <thead className="text-white rounded-lg">
                   <tr>
-                    <th>Data</th>
-                    <th>Descrição</th>
-                    <th>Valor</th>
+                    <th className="bg-green-500 rounded-tl-lg">Data</th>
+                    <th className="bg-green-500 ">Descrição</th>
+                    <th className="bg-green-500 rounded-tr-lg">Valor</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -52,7 +53,7 @@ export function TransactionsTable({ title, values }: { title: string, values: Ar
                       <td>{entry.description}</td>
                       <td>
                         {entry.operation === "addition" ? "+" : "-"}
-                        {entry.value}
+                        {formatNumberToCurrencyString(entry.value)}
                       </td>
                     </tr>
                   ))}

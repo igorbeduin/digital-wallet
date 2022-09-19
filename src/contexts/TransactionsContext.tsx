@@ -41,7 +41,7 @@ export function TransactionsContextProvider({ children }: {children: React.React
   const { user, updateUserWallet } = useAuthenticationContext();
   const [bitcoinPrice, setBitcoinPrice] = useState("");
   const [busdPrice, setBusdPrice] = useState("");
-  const intervalTime = 10000;
+  const intervalTime = 10000; //10s
   const { setUserNewEntry } = useHistoryDb();
 
   const maxBrlValueLength = 9;

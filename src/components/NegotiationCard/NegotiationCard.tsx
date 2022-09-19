@@ -42,14 +42,14 @@ export function NegotiationCard({ transactionId, transactionType }: { transactio
       currencyId: "BTC",
       maxLengthInput: maxBtcValueLength,
       currencyPrice: String(Number(busdPrice) / Number(bitcoinPrice)),
-      inputPlaceholder: "Trocar Bitcoins por BUSDs",
+      inputPlaceholder: "Converter Bitcoins por BUSDs",
       targetCurrency: "BUSD"
     },
     busdToBtc: {
       currencyId: "BUSD",
       maxLengthInput: maxBusdValueLength,
       currencyPrice: String(Number(bitcoinPrice) / Number(busdPrice)),
-      inputPlaceholder: "Trocar BUSDs por Bitcoins",
+      inputPlaceholder: "Converter BUSDs por Bitcoins",
       targetCurrency: "BTC"
     },
   };
@@ -57,7 +57,7 @@ export function NegotiationCard({ transactionId, transactionType }: { transactio
   const transactionTypesMap: {[key: string]: string} = {
     buying: "Comprar",
     selling: "Vender",
-    exchange: "Trocar",
+    exchange: "Converter",
   };
 
   const { currencyId, maxLengthInput, currencyPrice, inputPlaceholder, targetCurrency} =

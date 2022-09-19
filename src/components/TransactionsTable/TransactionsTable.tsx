@@ -36,8 +36,8 @@ export function TransactionsTable({ title, values }: { title: string, values: Ar
 
   return (
     <>
-      <h1 className="text-2xl mb-2 text-gray-800 font-semibold w-full">{title}</h1>
-      <div className="bg-slate-50 rounded-lg flex flex-col justify-center items-center h-fit mb-6 w-full">
+      <div className="bg-slate-50 rounded-lg flex flex-col justify-center items-center h-fit mb-6 p-4 w-full">
+        <h1 className="text-2xl mb-2 text-green-500 font-semibold w-full">{title}</h1>
         {values.length ? (
           <>
             <div className="w-full h-full flex justify-center items-start">
@@ -101,7 +101,7 @@ export function TransactionsTable({ title, values }: { title: string, values: Ar
             </div>
           </>
         ) : (
-          <div className="flex justify-center items-center py-4">
+          <div className="flex justify-center items-center pb-6">
             <p> Nenhuma transação disponível</p>
           </div>
         )}

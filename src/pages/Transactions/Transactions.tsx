@@ -22,10 +22,10 @@ export function Transactions() {
 
   return (
     <div className="h-fit">
-      <p className="text-2xl mb-2 text-gray-800 font-semibold">Histórico de transações</p>
-      <p className="text-sm mb-2 text-gray-800">Aqui você pode navegar em seus extratos.</p>
-      <p className="text-sm mb-2 text-gray-800">As transações de cada moeda estão separadas em tabelas diferentes.</p>
-      <p className="text-sm mb-2 text-gray-800">É possível filtrar cada tabela por tipo de transação.</p>
+      <p className="text-2xl mb-1 text-gray-800 font-semibold">Histórico de transações</p>
+      <p className="text-sm mb-1 text-gray-800">Aqui você pode navegar em seus extratos.</p>
+      <p className="text-sm mb-1 text-gray-800">As transações de cada moeda estão separadas em tabelas diferentes.</p>
+      <p className="text-sm mb-4 text-gray-800">É possível filtrar cada tabela por tipo de transação.</p>
       {Object.entries(userHistory).map((entry) => {
         const currencyId: string = entry[0];
         const values = entry[1] as Array<HistoryEntryInterface>;

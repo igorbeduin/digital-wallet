@@ -1,3 +1,66 @@
 # Digital Wallet
 
+## Sobre
+---
+Digital Wallet (ou MyWallet) é uma aplicação web desenvolvida em ReactJS com o objetivo de simular um portal para negociação e gerenciamento de sua carteira digital.
 
+
+A ideia é que o usuário possa criar uma conta, acessar sua carteria e imediatamento começar a negociar. Para isso, ao criar uma conta já é disponibilizado para o usuário R$100.000,00 (ficcionais) de crédito em sua carteira.
+
+Os bancos de dados de usuários, carteiras e histórico de transações estão abstraídos localmente no navegador, dessa forma a todo momento as informações salvas podem ser acessadas em seu *localStorage*.
+
+Ainda, nesta aplicação é possível fazer negociações com 3 moedas: Real (BRL), Bitcoin (BTC) e BinanceDollar(BUSD). Dessa forma podemos: comprar criptomoedas (BTC/BUSD) com Real; vender criptomoedas, recebendo em Real; e negociar as criptomoedas entre si, aplicando as taxas de conversão combinadas.
+
+Mais detalhes sobre as funcionalidades disponíveis a seguir.
+
+## Instalação e Execução
+---
+
+### Clone este repositório:
+```
+git clone https://github.com/igorbeduin/digital-wallet
+cd digital-wallet
+```
+### Instale as dependências:
+```
+yarn install
+```
+
+### Execute localmente (*development*):
+```
+yarn start
+```
+
+## Funcionalidades
+---
+- Cadastro de usuário;
+- Login de usuário;
+- Visualização de seus créditos na carteira separados por moeda;
+- Visualização em tempo real das cotações de BTC e BUSD (atualizadas a cada 10s);
+- Comprar Bitcoins, usando Real
+- Vender Bitcoins, recebendo em Real
+- Comprar BUSDs, usando Real
+- Vender BUSDs, recebendo em Real
+- Trocar BUSDs por Bitcoins
+- Trocar Bitcoins por BUSDs
+- Visualizar extrato de negociações com suas descrições, separado por moeda
+
+## Guia de uso
+---
+
+## Design
+---
+O portal foi desenvolvido se baseando na ideia de **Dashboard**, com uma barra de navegação entre paginas e *cards* de funcionalidades.
+
+Todas as paginas e componentes foram pensados de forma responsiva seguindo o princípio de "mobile-first" do TailwindCSS. Assim, as classes são padronizadas para telas pequenas e mudam especificamente para breakpoints de telas grandes.
+
+## Desenvolvido com
+---
+- ReactJs
+- TailwindCSS
+- Typescript
+- FontAwesome
+- Axios
+- ReactToastify
+- ReactRouter
+- Eslint

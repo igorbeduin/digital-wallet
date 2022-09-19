@@ -1,4 +1,5 @@
 # Digital Wallet
+![alt text](https://user-images.githubusercontent.com/19144094/190949921-78db96e6-44a4-43ed-a16a-4e244645e835.png "SignIn")
 
 ## Sobre
 ---
@@ -53,7 +54,7 @@ Todas as paginas e componentes foram pensados de forma responsiva seguindo o pri
 
 ## Navegando nas Telas
 ![alt text](https://user-images.githubusercontent.com/19144094/190949921-78db96e6-44a4-43ed-a16a-4e244645e835.png "SignIn")
-![alt text](https://user-images.githubusercontent.com/19144094/190950105-66a4e698-3665-4372-b80d-f7933ef520fd.png "SignUn")
+![alt text](https://user-images.githubusercontent.com/19144094/190950105-66a4e698-3665-4372-b80d-f7933ef520fd.png "SignUp")
 ![alt text](https://user-images.githubusercontent.com/19144094/190950159-60d71524-4d17-450e-84d1-d75a12a05a73.png "Home")
 ![alt text](https://user-images.githubusercontent.com/19144094/190950238-12cf70c9-35b5-4156-b2a8-824f8ea2b8c6.png "BuyingBitcoins")
 ![alt text](https://user-images.githubusercontent.com/19144094/190950294-1cdd5abb-24ca-4af4-a04f-8eaa66e43fe3.png "ConfirmationModal")

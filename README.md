@@ -62,7 +62,7 @@ Todas as paginas e componentes foram pensados de forma responsiva seguindo o pri
 ![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/signinMobile.png "LoginMobile")
 ![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/homeMobile.png "HomeMobile")
 
-Mais imagens disponíveis [aqui](https://github.com/igorbeduin/digital-wallet/tree/dev/src/images).
+Mais imagens disponíveis [aqui](https://github.com/igorbeduin/digital-wallet/tree/master/src/images).
 
 ## Desenvolvido com
 ---

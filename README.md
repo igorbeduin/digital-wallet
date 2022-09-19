@@ -61,6 +61,8 @@ Todas as paginas e componentes foram pensados de forma responsiva seguindo o pri
 ![alt text](https://user-images.githubusercontent.com/19144094/190950461-f59382d8-fd1a-4f30-9f8b-394481c21304.png "LoginMobile")
 ![alt text](https://user-images.githubusercontent.com/19144094/190950458-11d0880d-5789-47f6-83a0-ab9ff46c4ded.png "HomeMobile")
 
+Mais imagens disponíveis [aqui](https://github.com/igorbeduin/digital-wallet/tree/dev/src/images).
+
 ## Desenvolvido com
 ---
 - ReactJs

@@ -40,6 +40,7 @@ export function Login() {
           value={usernameInputValue}
           onChange={(event) => setUsernameInputValue(event.target.value)}
           placeholder="Usuário"
+          aria-label="username-input"
           className={
             loginError
               ? "rounded-t-lg p-2 h-10 w-full border border-solid shadow-sm focus:border-red-400 focus:outline-none focus:shadow-sm focus:shadow-red-400"
@@ -53,6 +54,7 @@ export function Login() {
             value={passwordInputValue}
             onChange={(event) => setPasswordInputValue(event.target.value)}
             placeholder="Senha"
+            aria-label="password-input"
             className={
               loginError
                 ? "rounded-b-lg p-2 h-10 w-full border border-solid shadow-sm focus:border-red-400 focus:outline-none focus:shadow-sm focus:shadow-red-400"

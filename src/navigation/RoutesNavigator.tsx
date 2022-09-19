@@ -25,7 +25,7 @@ export function RoutesNavigator () {
           )
           : (
             <>
-              <Route path="*" element={<Navigate to="/login" />} />
+              <Route path="/" element={<Navigate to="/login" />} />
               <Route path="/" element={<LandingPage />}>
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />

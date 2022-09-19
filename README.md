@@ -14,7 +14,7 @@
   - [x] SignUp
   - [x] Dashboard
 - [x] Dashboard subpages navigation 
-- [ ] Subpages content
+- [x] Subpages content
   - [x] Summary
   - [x] Negotiate
   - [x] Transactions History
@@ -25,3 +25,7 @@
 - [x] Renomear hook 'useAuthorization' para 'useUsersDb' ou algo do tipo
 - [x] Renomear contexto 'TransactionContext' para 'TransactionsContext' ou algo do tipo
 - [ ] Testes
+  - [ ] Login
+    - [ ] Login com usuário existente
+    - [ ] Falha de Login com usuário não existente
+    - [x] Navegar para SignUp

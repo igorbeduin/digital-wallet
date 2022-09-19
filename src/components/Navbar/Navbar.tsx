@@ -29,7 +29,7 @@ export function Navbar() {
           </div>
         ))}
         <button
-          className="w-24 flex flex-col md:flex-row justify-start items-center text-gray-800 hover:text-red-500 md:py-2 md:pl-6"
+          className="md:mt-6 w-24 flex flex-col md:flex-row justify-start items-center text-gray-800 hover:text-red-500 md:py-2 md:pl-6"
           onClick={logout}
         >
           <FontAwesomeIcon icon={faRightFromBracket} />

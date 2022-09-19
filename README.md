@@ -34,9 +34,17 @@ yarn start
 ## Funcionalidades
 ---
 - Cadastro de usuário;
+  ```
+  No início da aplicação é criado um usuário padrão username&password=admin
+  ```
 - Login e logout de usuário;
 - Visualização de seus créditos na carteira separados por moeda;
 - Visualização em tempo real das cotações de BTC e BUSD (atualizadas a cada 10s);
+  ```
+  Os valores de BTC e BUSD são obtidos pelas APIs públicas:
+    https://www.mercadobitcoin.net/api/BTC/ticker, pelo atributo { ticker: { last } }
+    https://economia.awesomeapi.com.br/all/USD-BRL, pelo atributo { USD: { bid } } 
+  ```
 - Comprar Bitcoins, usando Real
 - Vender Bitcoins, recebendo em Real
 - Comprar BUSDs, usando Real

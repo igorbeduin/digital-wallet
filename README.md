@@ -1,5 +1,5 @@
 # Digital Wallet
-![alt text](https://user-images.githubusercontent.com/19144094/190949921-78db96e6-44a4-43ed-a16a-4e244645e835.png "SignIn")
+![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/login.png "SignIn")
 
 ## Sobre
 ---
@@ -53,14 +53,14 @@ O portal foi desenvolvido se baseando na ideia de **Dashboard**, com uma barra d
 Todas as paginas e componentes foram pensados de forma responsiva seguindo o princípio de "mobile-first" do TailwindCSS. Assim, as classes são padronizadas para telas pequenas e mudam especificamente para breakpoints de telas grandes.
 
 ## Navegando nas Telas
-![alt text](https://user-images.githubusercontent.com/19144094/190949921-78db96e6-44a4-43ed-a16a-4e244645e835.png "SignIn")
-![alt text](https://user-images.githubusercontent.com/19144094/190950105-66a4e698-3665-4372-b80d-f7933ef520fd.png "SignUp")
-![alt text](https://user-images.githubusercontent.com/19144094/190950159-60d71524-4d17-450e-84d1-d75a12a05a73.png "Home")
-![alt text](https://user-images.githubusercontent.com/19144094/190950238-12cf70c9-35b5-4156-b2a8-824f8ea2b8c6.png "BuyingBitcoins")
-![alt text](https://user-images.githubusercontent.com/19144094/190950294-1cdd5abb-24ca-4af4-a04f-8eaa66e43fe3.png "ConfirmationModal")
-![alt text](https://user-images.githubusercontent.com/19144094/190950348-521b5afe-4d6a-4fc3-97f0-a793896a26d4.png "Transactions")
-![alt text](https://user-images.githubusercontent.com/19144094/190950461-f59382d8-fd1a-4f30-9f8b-394481c21304.png "LoginMobile")
-![alt text](https://user-images.githubusercontent.com/19144094/190950458-11d0880d-5789-47f6-83a0-ab9ff46c4ded.png "HomeMobile")
+![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/login.png "SignIn")
+![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/signup.png "SignUp")
+![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/home.png "Home")
+![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/buyingBtc.png "Buying Bitcoin")
+![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/buyingModal.png "Confirmation Modal")
+![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/history.png "Transactions")
+![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/signinMobile.png "LoginMobile")
+![alt text](https://github.com/igorbeduin/digital-wallet/blob/master/src/images/homeMobile.png "HomeMobile")
 
 Mais imagens disponíveis [aqui](https://github.com/igorbeduin/digital-wallet/tree/dev/src/images).
 

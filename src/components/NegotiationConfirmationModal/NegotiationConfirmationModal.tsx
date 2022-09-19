@@ -25,7 +25,7 @@ export function NegotiationConfirmationModal({
     <>
       {isOpen && 
       <div className="fixed inset-0 bg-black bg-opacity-50 w-screen h-screen flex justify-center items-center">
-        <div className="bg-slate-50 w-96 h-80 rounded-lg p-4">
+        <div className="bg-slate-50 w-80 md:w-96 h-80 rounded-lg p-4">
           <p className="text-xl">Deseja confirmar a transação?</p>
           <div className="w-full mt-2 h-4/6 flex flex-col justify-center items-center">
             <div className="text-2xl font-bold">

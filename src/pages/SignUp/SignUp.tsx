@@ -17,7 +17,7 @@ export function SignUp() {
 
   const navigate = useNavigate();
 
-  const { setUser } = useUsersDb();
+  const { createUser } = useUsersDb();
   const { initializeUserWallet } = useWalletsDb();
   const { initializeUserHistory } = useHistoryDb();
 
@@ -49,7 +49,7 @@ export function SignUp() {
         onSubmit={(event) => {
           event.preventDefault();
           try {
-            setUser({
+            createUser({
               username: usernameInputValue,
               password: passwordInputValue,
               passwordValidation: passwordValidationInputValue,

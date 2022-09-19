@@ -8,7 +8,7 @@ export function useUsersDb() {
     password: string,
   }
 
-  function getUser({ username, password }: {username: string, password: string}) {
+  function validateUser({ username, password }: {username: string, password: string}) {
     const users = JSON.parse(localStorage.getItem("users") || "{}");
     const userFound = !!users.find(
       (user: UserInterface) => user.username === username && user.password === password
@@ -17,7 +17,7 @@ export function useUsersDb() {
     else throw new Error("User not found");
   }
 
-  function setUser({ username, password, passwordValidation }: { username: string, password: string, passwordValidation: string }) {
+  function createUser({ username, password, passwordValidation }: { username: string, password: string, passwordValidation: string }) {
     const users = JSON.parse(localStorage.getItem("users") || "{}");
     const userFound = !!users.find(
       (user: UserInterface) => user.username === username);
@@ -35,5 +35,5 @@ export function useUsersDb() {
 
   function signOut() {}
 
-  return { getUser, setUser, signOut };
+  return { validateUser, createUser, signOut };
 }

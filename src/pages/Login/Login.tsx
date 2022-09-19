@@ -7,7 +7,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useUsersDb } from "hooks/useUsersDb";
 
 export function Login() {
-  const { getUser } = useUsersDb();
+  const { validateUser } = useUsersDb();
   const [usernameInputValue, setUsernameInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +20,7 @@ export function Login() {
         onSubmit={(event) => {
           event.preventDefault();
           try {
-            getUser({
+            validateUser({
               username: usernameInputValue,
               password: passwordInputValue,
             });

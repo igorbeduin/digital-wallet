@@ -17,7 +17,7 @@ export function SignUp() {
 
   const navigate = useNavigate();
 
-  const { setUser } = useUsersDb();
+  const { createUser } = useUsersDb();
   const { initializeUserWallet } = useWalletsDb();
   const { initializeUserHistory } = useHistoryDb();
 
@@ -25,7 +25,7 @@ export function SignUp() {
 
   function handlePasswordInputChange(value: string) {
     setPasswordInputValue(value);
-    if (value.length <= passwordMinLength) {
+    if (value.length < passwordMinLength) {
       setSignUpError(`A senha deve conter no mínimo ${passwordMinLength}`);
     } else {
       setSignUpError("");
@@ -36,7 +36,7 @@ export function SignUp() {
     setPasswordValidationInputValue(value);
     if (value !== passwordInputValue) {
       setSignUpError("As senhas devem ser iguais");
-    } else if (value.length <= passwordMinLength) {
+    } else if (value.length < passwordMinLength) {
       setSignUpError(`A senha deve conter no mínimo ${passwordMinLength}`);
     } else {
       setSignUpError("");
@@ -49,7 +49,7 @@ export function SignUp() {
         onSubmit={(event) => {
           event.preventDefault();
           try {
-            setUser({
+            createUser({
               username: usernameInputValue,
               password: passwordInputValue,
               passwordValidation: passwordValidationInputValue,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -7,11 +7,12 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useUsersDb } from "hooks/useUsersDb";
 
 export function Login() {
-  const { getUser } = useUsersDb();
+  const { validateUser } = useUsersDb();
   const [usernameInputValue, setUsernameInputValue] = useState("");
   const [passwordInputValue, setPasswordInputValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -19,7 +20,7 @@ export function Login() {
         onSubmit={(event) => {
           event.preventDefault();
           try {
-            getUser({
+            validateUser({
               username: usernameInputValue,
               password: passwordInputValue,
             });
@@ -30,6 +31,8 @@ export function Login() {
             }
             setUsernameInputValue("");
             setPasswordInputValue("");
+          } finally {
+            navigate("/");
           }
         }}
         className="flex w-full flex-col justify-center items-center mt-8 md:w-8/12"
@@ -40,6 +43,7 @@ export function Login() {
           value={usernameInputValue}
           onChange={(event) => setUsernameInputValue(event.target.value)}
           placeholder="Usuário"
+          aria-label="username-input"
           className={
             loginError
               ? "rounded-t-lg p-2 h-10 w-full border border-solid shadow-sm focus:border-red-400 focus:outline-none focus:shadow-sm focus:shadow-red-400"
@@ -53,6 +57,7 @@ export function Login() {
             value={passwordInputValue}
             onChange={(event) => setPasswordInputValue(event.target.value)}
             placeholder="Senha"
+            aria-label="password-input"
             className={
               loginError
                 ? "rounded-b-lg p-2 h-10 w-full border border-solid shadow-sm focus:border-red-400 focus:outline-none focus:shadow-sm focus:shadow-red-400"

@@ -8,7 +8,7 @@ export function useUsersDb() {
     password: string,
   }
 
-  function getUser({ username, password }: {username: string, password: string}) {
+  function validateUser({ username, password }: {username: string, password: string}) {
     const users = JSON.parse(localStorage.getItem("users") || "{}");
     const userFound = !!users.find(
       (user: UserInterface) => user.username === username && user.password === password
@@ -17,11 +17,10 @@ export function useUsersDb() {
     else throw new Error("User not found");
   }
 
-  function setUser({ username, password, passwordValidation }: { username: string, password: string, passwordValidation: string }) {
+  function createUser({ username, password, passwordValidation }: { username: string, password: string, passwordValidation: string }) {
     const users = JSON.parse(localStorage.getItem("users") || "{}");
     const userFound = !!users.find(
-      (user: UserInterface) => user.username === username && user.password === password
-    );
+      (user: UserInterface) => user.username === username);
     if (userFound) throw new Error("Ops! Parece que esse usuário já existe");
     else if (password !== passwordValidation)
       throw new Error("As senhas devem ser iguais");
@@ -36,5 +35,5 @@ export function useUsersDb() {
 
   function signOut() {}
 
-  return { getUser, setUser, signOut };
+  return { validateUser, createUser, signOut };
 }

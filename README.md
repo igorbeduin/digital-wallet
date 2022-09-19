@@ -12,7 +12,6 @@ Os bancos de dados de usuários, carteiras e histórico de transações estão a
 
 Ainda, nesta aplicação é possível fazer negociações com 3 moedas: Real (BRL), Bitcoin (BTC) e BinanceDollar(BUSD). Dessa forma podemos: comprar criptomoedas (BTC/BUSD) com Real; vender criptomoedas, recebendo em Real; e negociar as criptomoedas entre si, aplicando as taxas de conversão combinadas.
 
-Mais detalhes sobre as funcionalidades disponíveis a seguir.
 
 ## Instalação e Execução
 ---

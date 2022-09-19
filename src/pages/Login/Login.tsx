@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +12,7 @@ export function Login() {
   const [passwordInputValue, setPasswordInputValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -30,6 +31,8 @@ export function Login() {
             }
             setUsernameInputValue("");
             setPasswordInputValue("");
+          } finally {
+            navigate("/");
           }
         }}
         className="flex w-full flex-col justify-center items-center mt-8 md:w-8/12"

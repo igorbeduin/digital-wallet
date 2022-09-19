@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 import { WalletInterface } from "consts/wallets";
 import { useWalletsDb } from "hooks/useWalletsDb";
+import { useNavigate } from "react-router-dom";
 
 interface AuthenticationContextInterface {
   isSignedIn: boolean
@@ -25,6 +26,7 @@ export function AuthenticationContextProvider({ children }: {children: React.Rea
   const [isSignedIn, setIsSignedIn] = useState(true);
   const [user, setUser] = useState({username: "", wallet: { currencies: {}}});
   const { getUserWallet, setUserWallet } = useWalletsDb();
+  const navigate = useNavigate();
 
   if (isSignedIn && !user.username) logout();
 
@@ -37,6 +39,7 @@ export function AuthenticationContextProvider({ children }: {children: React.Rea
   function logout() {
     setUser({username: "", wallet: { currencies: {}}});
     setIsSignedIn(false);
+    navigate("/");
   }
 
   function updateUserWallet(newWallet: WalletInterface) {

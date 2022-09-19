@@ -35,7 +35,7 @@ yarn start
 ## Funcionalidades
 ---
 - Cadastro de usuário;
-- Login de usuário;
+- Login e logout de usuário;
 - Visualização de seus créditos na carteira separados por moeda;
 - Visualização em tempo real das cotações de BTC e BUSD (atualizadas a cada 10s);
 - Comprar Bitcoins, usando Real

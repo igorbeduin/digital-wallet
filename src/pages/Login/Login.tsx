@@ -78,9 +78,9 @@ export function Login() {
         </div>
         <button
           type="submit"
-          className="rounded-lg w-full bg-green-500 text-white py-1 mt-8 hover:bg-green-600"
+          className="rounded-lg w-full bg-red-500 text-white py-1 mt-8 hover:bg-green-600"
         >
-              {/* Login */}
+              Login
         </button>
         <div className="flex flex-row w-full my-4 justify-center items-center">
           <hr className="w-5/12 mx-2" />

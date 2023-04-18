@@ -37,7 +37,7 @@ export function Login() {
         }}
         className="flex w-full flex-col justify-center items-center mt-8 md:w-8/12"
       >
-        <p className="text-sm mt-2 mb-2">Entre com a sua conta teste</p>
+        <p className="text-sm mt-2 mb-2">Entre com a sua conta</p>
         <input
           required
           value={usernameInputValue}
@@ -80,7 +80,7 @@ export function Login() {
           type="submit"
           className="rounded-lg w-full bg-green-500 text-white py-1 mt-8 hover:bg-green-600"
         >
-              Login
+              {/* Login */}
         </button>
         <div className="flex flex-row w-full my-4 justify-center items-center">
           <hr className="w-5/12 mx-2" />

@@ -37,7 +37,7 @@ export function Login() {
         }}
         className="flex w-full flex-col justify-center items-center mt-8 md:w-8/12"
       >
-        <p className="text-sm mt-2 mb-2">Entre com a sua conta</p>
+        <p className="text-sm mt-2 mb-2">Entre com a sua conta teste</p>
         <input
           required
           value={usernameInputValue}

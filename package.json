@@ -29,7 +29,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy:prod": "aws s3 sync build/ s3://digital-wallet-prod",
+    "deploy:stg": "aws s3 sync build/ s3://digital-wallet-stg", 
+    "prod": "yarn build && yarn deploy:prod",
+    "stg": "yarn build && yarn deploy:stg" 
+
   },
   "eslintConfig": {
     "extends": [
